@@ -1,0 +1,1032 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Home2 Suites / Hilton Garden Inn Fort Wayne North — Offered by Hodges Ward Elliott</title>
+<meta name="description" content="Hodges Ward Elliott is pleased to present the opportunity to acquire the dual-branded 172-room Home2 Suites/Hilton Garden Inn Fort Wayne North." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@800&display=swap" rel="stylesheet">
+
+<style id="hwe-nav-styles">
+  /* ---- Theme knobs: change these to re-skin the nav ---- */
+  :root{
+    --nav-accent:#1A6FA3;                  /* CTA fill + link border            */
+    --nav-accent-soft:rgba(26,111,163,.9); /* CTA fill at top (slightly softer) */
+    --nav-accent-hover:#2585BE;            /* CTA / menu-cta hover              */
+    --nav-glass:rgba(13,42,64,.42);        /* bar tint at top                   */
+    --nav-menu-glass:rgba(13,42,64,.88);   /* dropdown panel tint               */
+    --nav-height:74px;                     /* bar height at top                 */
+    --nav-logo-height:38px;                /* logo height                       */
+    --nav-font:"Poppins",system-ui,sans-serif;
+  }
+
+  /* ---------- NAV (glass; inline links at top → hamburger on scroll) ---------- */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--nav-height);display:flex;align-items:center;
+       justify-content:space-between;padding:0 clamp(20px,5vw,72px);
+       background:var(--nav-glass);backdrop-filter:blur(18px) saturate(130%);
+       -webkit-backdrop-filter:blur(18px) saturate(130%);
+       border-bottom:1px solid rgba(255,255,255,.12);
+       transition:background .35s,height .35s}
+  .nav-logo{display:inline-flex;align-items:center}
+  .nav .logo{height:var(--nav-logo-height);width:auto;opacity:.65;transition:opacity .3s}
+  .nav-logo:hover .logo{opacity:1}
+
+  /* Inline links (shown at top) */
+  .nav-links{display:flex;gap:clamp(14px,2.1vw,32px);align-items:center}
+  .nav-links a{font-size:clamp(9px,1vw,11px);letter-spacing:.2em;text-transform:uppercase;
+               color:rgba(255,255,255,.82);transition:color .2s;white-space:nowrap;
+               text-decoration:none;font-family:var(--nav-font)}
+  .nav-links a:hover{color:#fff}
+  .nav-links a.navcta{padding:10px 18px;border:1px solid var(--nav-accent);color:#fff;background:var(--nav-accent-soft)}
+  .nav-links a.navcta:hover{background:var(--nav-accent);color:#fff}
+
+  /* Hamburger button (shown when scrolled / on narrow screens) */
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;
+              width:36px;height:36px;padding:0;background:transparent;border:0;cursor:pointer;z-index:2}
+  .nav-toggle span{display:block;width:26px;height:2px;border-radius:2px;background:#fff;
+                   transition:transform .3s ease,opacity .25s ease;transform-origin:center}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* Dropdown menu (glass panel) */
+  .nav-menu{position:absolute;top:100%;right:clamp(16px,5vw,64px);margin-top:12px;min-width:248px;
+            display:flex;flex-direction:column;gap:2px;padding:14px;
+            background:var(--nav-menu-glass);backdrop-filter:blur(20px) saturate(130%);
+            -webkit-backdrop-filter:blur(20px) saturate(130%);
+            border:1px solid rgba(255,255,255,.14);border-radius:5px;box-shadow:0 24px 60px rgba(0,0,0,.4);
+            opacity:0;visibility:hidden;transform:translateY(-10px);
+            transition:opacity .28s ease,transform .28s ease,visibility .28s}
+  .nav-menu.open{opacity:1;visibility:visible;transform:translateY(0)}
+  .nav-menu a{padding:13px 16px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+              color:rgba(255,255,255,.85);border-radius:3px;transition:background .2s,color .2s;
+              text-decoration:none;font-family:var(--nav-font)}
+  .nav-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .nav-menu a.menu-cta{margin-top:8px;background:var(--nav-accent);color:#fff;font-weight:600;text-align:center}
+  .nav-menu a.menu-cta:hover{background:var(--nav-accent-hover);color:#fff}
+  /* On scroll: the bar disappears — only the logo + hamburger remain, floating */
+  .nav.scrolled{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:transparent}
+  .nav.scrolled .nav-links{display:none}
+  .nav.scrolled .nav-toggle{display:flex}
+  .nav.scrolled .logo{filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
+  .nav.scrolled .nav-toggle span{box-shadow:0 1px 5px rgba(0,0,0,.55)}
+  /* Light page: float the logo + hamburger on small navy glass chips so they stay legible over white sections */
+  .nav.scrolled .nav-logo{padding:10px 16px;border-radius:4px;background:rgba(13,42,64,.74);
+       backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  .nav.scrolled .nav-logo .logo{height:28px;opacity:.95;filter:none}
+  .nav.scrolled .nav-toggle{width:48px;height:48px;align-items:center;border-radius:50%;background:rgba(13,42,64,.74);
+       backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  .nav.scrolled .nav-toggle span{width:22px;box-shadow:none}
+  /* Narrow screens: always hamburger */
+  @media(max-width:940px){
+    .nav-links{display:none}
+    .nav-toggle{display:flex}
+  }
+</style>
+
+<style>
+  :root{
+    /* Home2 Suites / Hilton Garden Inn Fort Wayne North palette */
+    --primary:#1A6FA3;    --primary-rgb:26,111,163;   /* dual-brand blue     */
+    --primary-dk:#135480; --primary-deep:#0D2A40;
+    --accent:#B1BB35;     --accent-rgb:177,187,53;    /* Home2 Suites green  */
+    --sand:#D8E0E7;       --sand-lt:#EDF2F6;          /* section backgrounds */
+    --white:#FFFFFF;                                  /* main background     */
+    --text:#55565A;                                   /* body text           */
+    --divider:rgba(85,86,90,.16);
+    --font-cormorant:"Cormorant Garamond",Georgia,serif;
+    --font-body:"Poppins",system-ui,sans-serif;
+    --pad:clamp(24px,7vw,100px);
+  }
+  *{box-sizing:border-box}
+  p{margin:0}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--white);color:var(--text);
+       font-family:var(--font-body);font-weight:300;line-height:1.6;
+       -webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+
+  .section{padding:clamp(64px,10vh,120px) var(--pad)}
+  .bg-white{background:var(--white)}
+  .bg-sand{background:var(--sand)}
+  .wrap{max-width:1280px;margin:0 auto}
+  .bleed{margin-left:calc(-1*var(--pad));margin-right:calc(-1*var(--pad))}
+
+  h1,h2,h3{font-family:var(--font-cormorant);font-weight:400;margin:0}
+  .h2{font-size:clamp(30px,3.6vw,46px);line-height:1.1;color:var(--primary)}
+  .lead{font-size:15.5px;color:var(--text);line-height:1.8;text-align:justify;text-align-last:left}
+  .em{font-style:italic}
+
+  /* Scroll-reveal: elements scale + fade in as they enter the viewport */
+  .reveal{opacity:0;transform:scale(.94) translateY(18px);
+       transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none !important}}
+
+  .btn{display:inline-block;padding:13px 26px;font-family:var(--font-body);font-size:11px;
+       font-weight:600;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;
+       border-radius:1px;transition:transform .2s,opacity .2s,background .2s;border:none;cursor:pointer;
+       min-width:230px;text-align:center;box-sizing:border-box}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-cta{background:var(--primary);color:#fff}
+  .btn-cta:hover{background:var(--primary-dk)}
+  .btn-ghost{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+  .btn-ghost:hover{background:rgba(var(--primary-rgb),.08)}
+
+  .side-cta{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:150;
+       background:var(--primary);color:#fff;writing-mode:vertical-rl;text-orientation:sideways;
+       padding:22px 11px;font-family:var(--font-body);font-size:11px;font-weight:600;
+       letter-spacing:.2em;text-transform:uppercase;text-decoration:none;
+       border-radius:0 3px 3px 0;border-right:3px solid var(--accent);transition:background .2s}
+  .side-cta:hover{background:var(--primary-dk)}
+  @media(max-width:900px){.side-cta{display:none}}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+
+  /* Overview — dual brand logo lockup */
+  .brand-lockup{display:flex;align-items:center;gap:clamp(22px,3.2vw,52px);flex-wrap:wrap}
+  .brand-lockup img{width:clamp(150px,15vw,210px);height:auto}
+  .brand-lockup .rule{width:1px;height:62px;background:var(--divider)}
+  @media(max-width:560px){.brand-lockup .rule{display:none}}
+
+  /* Overview property snapshot card */
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .stat-cell{padding:22px 26px;background:var(--sand-lt);border:1px solid var(--divider);
+       border-radius:2px;transition:transform .25s ease,box-shadow .25s ease;position:relative}
+  .stat-cell::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+       opacity:0;transition:opacity .25s ease}
+  .stat-cell:hover{transform:scale(1.06);box-shadow:0 20px 50px rgba(13,42,64,.22);z-index:2;background:#fff}
+  .stat-cell:hover::before{opacity:1}
+  .stat-cell.full{grid-column:1 / -1}
+  .stat-value{font-family:var(--font-body);font-size:20px;color:var(--primary);font-weight:500;line-height:1.4}
+  .stat-value small{display:block;font-size:14.5px;font-weight:400;line-height:1.55;color:var(--text)}
+  .stat-label{font-family:var(--font-body);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);margin-top:7px}
+
+  /* Gallery */
+  .gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:300px;gap:3px}
+  .g-item{position:relative;overflow:hidden}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .g-item:hover img{transform:scale(1.04)}
+  .g-caption{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;
+       background:linear-gradient(to top, rgba(var(--primary-rgb),.78), transparent);
+       font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#fff;
+       opacity:0;transition:opacity .3s}
+  .g-item:hover .g-caption{opacity:1}
+
+  /* Highlights (no eyebrows — a short accent rule sits above each heading) */
+  .highlight-section h2{max-width:24ch}
+  .highlight-section h2::before{content:"";display:block;width:56px;height:3px;background:var(--accent);margin-bottom:22px}
+  @media(min-width:1100px){
+    .highlight-section h2.one-line{max-width:none;white-space:nowrap}
+  }
+  .side-photos{display:flex;flex-direction:column;gap:24px}
+  .side-photo img{width:100%;height:230px;object-fit:cover;border-radius:2px;transition:transform .4s}
+  .side-photo:hover img{transform:scale(1.03)}
+  .photo-frame{position:relative;border-radius:2px;overflow:hidden;box-shadow:0 24px 70px rgba(13,42,64,.22)}
+  .photo-frame img{box-shadow:none}
+  .photo-label{position:absolute;left:0;right:0;bottom:0;padding:14px 18px;
+       background:linear-gradient(to top, rgba(0,0,0,.72), transparent);
+       font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.14em;
+       text-transform:uppercase;color:#fff;pointer-events:none}
+  .side-photos.tall .side-photo img{height:270px}
+  .side-photos.x-tall .side-photo img{height:400px}
+  /* Recent Vintage: copy + 3 photos on a 2x2 grid with equal rows, so every photo is the same
+     size and the left photo is flush with the right column's bottom photo */
+  .vintage-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(400px,1fr) minmax(400px,1fr);
+       grid-template-areas:"copy a" "c b";column-gap:64px;row-gap:24px}
+  .vintage-grid .photo-frame{height:100%}
+  .vintage-grid .photo-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+  .vintage-grid .photo-frame:hover img{transform:scale(1.03)}
+  @media(max-width:760px){
+    .vintage-grid{grid-template-columns:1fr;grid-template-rows:auto;grid-template-areas:"copy" "a" "b" "c";row-gap:20px}
+    .vintage-grid .photo-frame{height:280px}
+  }
+  /* Market photo pair under a highlight */
+  .photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+  .photo-pair .photo-frame img{width:100%;height:clamp(240px,26vw,360px);object-fit:cover}
+  @media(max-width:760px){.photo-pair{grid-template-columns:1fr}}
+
+  /* Hero logo on a frosted-glass panel (the dual-brand mark is blue, so the glass is light) */
+  .hero-glass{padding:clamp(24px,2.6vw,40px) clamp(28px,3vw,48px);border-radius:6px;
+       background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.72);
+       backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
+       box-shadow:0 26px 64px rgba(13,42,64,.34), inset 0 1px 0 rgba(255,255,255,.7)}
+  .shot{width:100%;object-fit:cover;border-radius:2px;box-shadow:0 24px 70px rgba(13,42,64,.22)}
+
+  .lead strong{font-weight:600}
+  .footnote{font-size:15.5px;line-height:1.8;color:var(--text);font-style:italic;margin-top:20px}
+
+  /* Stat callouts */
+  .stat-callout-row{display:grid;grid-template-columns:1fr;gap:16px;margin:36px 0 0}
+  .stat-callout{background:var(--white);border-left:4px solid var(--accent);padding:28px 30px;
+       box-shadow:0 18px 50px rgba(13,42,64,.12);display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+  .bg-white .stat-callout{background:var(--sand-lt)}
+  .stat-callout-num{font-family:var(--font-cormorant);font-weight:500;font-size:clamp(44px,5vw,64px);
+       line-height:1;color:var(--primary)}
+  .stat-callout-text{font-family:var(--font-cormorant);font-style:italic;font-weight:400;
+       font-size:clamp(19px,1.8vw,23px);line-height:1.35;color:var(--text)}
+  .stat-callout-text span{display:block;font-family:var(--font-body);font-style:normal;font-size:11px;
+       font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--primary);margin-top:8px}
+
+  /* Accolade cards (3-up) with a 3D tilt toward the pointer */
+  .awards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+  .award-card{position:relative;display:flex;flex-direction:column;gap:14px;overflow:hidden;
+       background:linear-gradient(180deg,#2585BE 0%,var(--primary) 55%,#145F8E 100%);
+       border-radius:4px;padding:28px 28px 26px;color:#fff;border-bottom:5px solid var(--accent);
+       box-shadow:0 1px 3px rgba(13,42,64,.28),0 10px 22px rgba(13,42,64,.22);
+       transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--s,1));
+       transform-style:preserve-3d;will-change:transform;
+       transition:transform .6s cubic-bezier(.2,.7,.2,1),box-shadow .6s ease}
+  .award-card.is-tilting{transition:transform .12s ease-out,box-shadow .3s ease;--s:1.03;
+       box-shadow:0 2px 6px rgba(13,42,64,.25),0 22px 40px rgba(13,42,64,.3)}
+  .award-card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s ease;
+       background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.24),rgba(255,255,255,0) 55%)}
+  .award-card.is-tilting::after{opacity:1}
+  .award-num{font-family:var(--font-cormorant);font-weight:500;font-size:clamp(42px,4.4vw,58px);
+       line-height:.95;letter-spacing:.01em}
+  .award-title{font-family:"Roboto Slab",Rockwell,Georgia,serif;font-weight:800;text-transform:uppercase;
+       font-size:clamp(14.5px,1.25vw,17px);line-height:1.25;margin:0;font-variant-numeric:lining-nums}
+  .award-src{font-family:var(--font-body);font-weight:300;font-size:13px;color:rgba(255,255,255,.82);margin-top:auto}
+  @media(max-width:900px){.awards-row{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){.award-card,.award-card::after{transition:none}}
+
+  /* Location */
+  .location-band{display:block;width:100%;height:clamp(300px,46vw,680px);object-fit:cover;object-position:50% 55%}
+  .location-split{display:grid;grid-template-columns:1fr 1.25fr;column-gap:clamp(40px,5vw,64px);align-items:start;
+       max-width:1280px;margin:0 auto;padding:72px 0}
+  .highlight-section h2.location-title{grid-column:1 / -1;max-width:none;margin-bottom:36px}
+  .location-info{padding:0;display:flex;flex-direction:column;justify-content:center}
+  .location-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:0}
+  .loc-card{position:relative;overflow:hidden;height:230px;border-radius:2px;outline:none;
+       transition:transform .3s ease,box-shadow .3s ease}
+  .loc-card img.loc-photo{width:100%;height:100%;object-fit:cover;display:block;
+       filter:grayscale(1) contrast(1.05) brightness(.82);transition:transform .6s ease,filter .45s ease}
+  .loc-card-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:64px;
+       background:linear-gradient(to top, rgba(0,0,0,.74) 0%, rgba(0,0,0,.2) 42%, rgba(0,0,0,.2) 100%);
+       transition:background .45s ease}
+  .loc-logo{height:70px;width:170px;max-width:66%;display:flex;align-items:center;justify-content:center;
+       filter:drop-shadow(0 2px 10px rgba(0,0,0,.55));transition:transform .45s ease}
+  .loc-logo img{height:100%;width:100%;object-fit:contain;display:block;filter:brightness(0) invert(1)}
+  .loc-card-meta{position:absolute;left:18px;right:18px;bottom:14px}
+  .loc-card-title{font-family:var(--font-cormorant);font-size:19px;color:#fff;font-weight:500;line-height:1.2}
+  .loc-card-desc{font-family:var(--font-body);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+       color:var(--accent);font-weight:600;line-height:1.4;margin-top:4px}
+  /* Hover / linked-bullet hover: reveal the photo in full color */
+  .loc-card:hover img.loc-photo,.loc-card.active img.loc-photo{filter:none;transform:scale(1.04)}
+  .loc-card:hover .loc-card-overlay,.loc-card.active .loc-card-overlay{
+       background:linear-gradient(to top, rgba(0,0,0,.68) 0%, rgba(0,0,0,0) 45%)}
+  .loc-card:hover .loc-logo,.loc-card.active .loc-logo{transform:scale(.92)}
+  .loc-card.active{z-index:2;box-shadow:0 22px 55px rgba(13,42,64,.35)}
+
+  .callout-list{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+  .callout-list li{display:flex;align-items:baseline;gap:12px;font-size:15px;color:var(--text);
+       line-height:1.6;padding:6px 8px;margin:0 -8px;border-radius:2px;transition:color .2s,background .2s}
+  .callout-list li[data-index]{cursor:pointer}
+  .callout-list li:hover{color:var(--primary)}
+  .callout-list li.active{color:var(--primary);background:rgba(255,255,255,.55)}
+  .callout-list .dot{width:7px;height:7px;min-width:7px;border-radius:50%;background:var(--accent);display:inline-block;transform:translateY(-2px);transition:box-shadow .2s}
+  .callout-list li.active .dot{box-shadow:0 0 0 4px rgba(var(--accent-rgb),.35)}
+
+  /* Brand */
+  .brand-section{background:var(--primary);position:relative;overflow:hidden;color:#fff}
+  .brand-section::before{content:"";position:absolute;top:-20%;right:-10%;width:60%;height:140%;
+       background:radial-gradient(circle, rgba(255,255,255,.08), transparent 70%);pointer-events:none}
+  .brand-section .h2{color:#fff}
+  .brand-section h2::before{content:"";display:block;width:56px;height:3px;background:var(--accent);margin-bottom:22px}
+  .brand-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .brand-head .h2{max-width:17ch}
+  .brand-logos{display:flex;align-items:center;gap:clamp(20px,2.6vw,38px);flex-wrap:wrap}
+  .brand-logo{width:clamp(140px,13vw,190px);height:auto}
+  .brand-logos .rule{width:1px;height:58px;background:rgba(255,255,255,.3)}
+  .brand-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:44px 0 0}
+  .brand-stat{background:rgba(255,255,255,.1);padding:30px 20px;text-align:center;border-bottom:3px solid var(--accent)}
+  .brand-stat .v{font-family:var(--font-cormorant);font-size:clamp(34px,3.6vw,52px);color:#fff;line-height:1.1}
+  .brand-stat .l{font-family:var(--font-body);font-size:11px;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:8px;letter-spacing:.12em}
+  .brand-logo-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:44px}
+  .brand-logo-tile{position:relative;aspect-ratio:5 / 3;display:flex;align-items:center;justify-content:center;
+       border:1px solid rgba(255,255,255,.14);border-radius:3px;background:rgba(255,255,255,.04);
+       transition:transform .3s cubic-bezier(.2,.7,.2,1),background .3s ease,border-color .3s ease,box-shadow .3s ease}
+  .brand-logo-tile img{width:100%;height:100%;object-fit:contain;opacity:.82;transition:opacity .3s ease}
+  .brand-logo-tile:hover{transform:scale(1.08);z-index:2;background:rgba(255,255,255,.1);
+       border-color:rgba(255,255,255,.35);box-shadow:0 16px 40px rgba(0,0,0,.25)}
+  .brand-logo-tile:hover img{opacity:1}
+  .brand-logo-tile.is-subject{border-color:var(--accent);background:rgba(var(--accent-rgb),.14)}
+  .brand-logo-tile.is-subject img{opacity:1}
+  @media(max-width:1100px){.brand-logo-grid{grid-template-columns:repeat(5,1fr)}}
+  @media(max-width:760px){.brand-logo-grid{grid-template-columns:repeat(3,1fr);gap:8px}}
+
+  /* CTA */
+  .cta-section{text-align:center}
+  .cta-section .h2{font-size:clamp(34px,4.5vw,54px)}
+  .cta-section .em{color:var(--text)}
+  .cta-section p{max-width:64ch;margin:22px auto 36px;font-size:15.5px;color:var(--text);line-height:1.8}
+  .cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  /* Footer */
+  .footer{background:var(--primary-deep);position:relative;overflow:hidden;color:#fff}
+  .footer-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(48px,8vw,120px);align-items:center}
+  .footer-logo{display:block;width:clamp(150px,14vw,210px);height:auto}
+  .footer-col-title{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600;
+       padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.2);margin-bottom:20px}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px 48px;margin-bottom:44px}
+  .contact-name{font-size:14px;font-weight:600;color:#fff}
+  .contact-title{font-size:13px;color:rgba(255,255,255,.65);margin-top:2px}
+  .contact-email{font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;margin-top:2px;display:inline-block}
+  .contact-email:hover{color:#fff}
+  .footer-bottom{padding:14px;text-align:center;font-size:11.5px;color:rgba(255,255,255,.45)}
+
+  @media(max-width:900px){
+    .location-split{grid-template-columns:1fr !important;gap:0 !important;padding:56px 0 !important}
+    .location-cards{gap:12px;padding:0}
+    .loc-card{height:190px}
+    .location-info{padding:0 0 32px !important}
+    .brand-stats{grid-template-columns:1fr}
+  }
+  @media(max-width:760px){
+    .hero-logo{right:auto !important;left:50% !important;transform:translateX(-50%) !important;
+         top:150px !important;width:84%;max-width:330px}
+    .hero-logo img{width:100% !important}
+    .two-col{grid-template-columns:1fr !important;gap:40px !important}
+    .gallery-grid{grid-template-columns:1fr !important;grid-auto-rows:260px !important}
+    .g-item{grid-column:auto !important;grid-row:auto !important}
+    .stats-grid{grid-template-columns:1fr !important}
+    .stat-cell{grid-column:1 / -1 !important}
+    .footer-grid{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr}
+    .location-cards{grid-template-columns:1fr}
+    .btn{min-width:0;width:100%}
+    /* Justified copy opens up ugly rivers at phone widths */
+    .lead{text-align:left;text-align-last:left}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ================= GLASS NAV ================= -->
+  <nav class="nav" id="nav">
+    <a class="nav-logo" href="#top"><img class="logo" id="nav-logo-img" src="images/hwe-logo-white.svg" alt="Hodges Ward Elliott"></a>
+    <div class="nav-links" id="navLinks"><!-- inline links injected by CONFIG --></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-menu" id="navMenu"><!-- dropdown links injected by CONFIG --></div>
+  </nav>
+
+  <a href="#contact" class="side-cta">Sign CA</a>
+
+  <!-- HERO -->
+  <section id="top" style="position:relative;height:clamp(640px,100vh,1040px);overflow:hidden">
+    <img id="hero-img" src="images/hero.jpg" alt="Home2 Suites and Hilton Garden Inn Fort Wayne North dual-branded hotel exterior at dusk"
+         style="position:absolute;left:0;right:auto;top:0;width:100%;max-width:none;height:100%;object-fit:cover;object-position:50% 50%;filter:brightness(.94);will-change:transform" />
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(13,42,64,.8) 0%, rgba(13,42,64,.3) 26%, transparent 48%),linear-gradient(to left, rgba(13,42,64,.55) 0%, rgba(13,42,64,.3) 34%, transparent 60%)"></div>
+
+    <div class="hero-logo hero-glass" style="position:absolute;top:clamp(150px,21vh,250px);right:var(--pad)">
+      <img src="images/logo-dual-brand-hero.svg" alt="Dual-Branded Hotel — Home2 Suites by Hilton and Hilton Garden Inn, Fort Wayne North, Indiana"
+           style="width:clamp(300px,28vw,420px);height:auto;display:block" />
+    </div>
+
+    <div style="position:absolute;bottom:0;left:0;right:0;padding-bottom:clamp(36px,5vh,64px);
+         padding-left:var(--pad);padding-right:var(--pad);display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <span style="font-size:13px;color:rgba(255,255,255,.9);letter-spacing:.08em">10650 Diebold Rd, Fort Wayne, Indiana</span>
+      <span style="width:1px;height:16px;background:var(--accent)"></span>
+      <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.9)">Offered by Hodges Ward Elliott</span>
+    </div>
+  </section>
+
+  <!-- INVESTMENT OVERVIEW -->
+  <section class="section bg-white" id="overview">
+    <div class="wrap">
+      <div class="brand-lockup">
+        <img src="images/logo-home2-color.svg" alt="Home2 Suites by Hilton" />
+        <span class="rule"></span>
+        <img src="images/logo-hgi-color.svg" alt="Hilton Garden Inn" />
+      </div>
+      <div class="two-col" style="margin-top:48px">
+        <div id="overview-copy-col">
+          <p class="lead">Hodges Ward Elliott (&ldquo;HWE&rdquo;) is pleased to present the opportunity to acquire the dual-branded 172-room Home2 Suites/Hilton Garden Inn Fort Wayne North (&ldquo;Property&rdquo; or &ldquo;Hotel&rdquo;). Built in 2021, the Property sits directly adjacent to Parkview Regional Medical Center, Fort Wayne&rsquo;s largest hospital campus by bed count and Parkview Health&rsquo;s flagship medical campus.</p>
+          <p class="lead" style="margin-top:20px">Located off I-69 on Diebold Road, the Hotel also offers convenient access to the Allen County War Memorial Coliseum (~12 minutes), Downtown Fort Wayne (~15 minutes), and Fort Wayne International Airport (~30 minutes). Offered free and clear of existing management and financing, the Property combines recent construction, Hilton brand strength, dual-brand synergies, and growing cash flow in a market benefiting from significant healthcare, corporate, and sports investment.</p>
+          <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap">
+            <!-- TODO: replace both CA hrefs with the RightSignature link + CA document for this deal -->
+            <a href="#contact" class="btn btn-cta">Sign CA Online</a>
+            <a href="#contact" class="btn btn-ghost">Download CA (DOCX)</a>
+          </div>
+          <img id="overview-photo" src="images/overview-exterior.jpg" alt="Dual-branded hotel exterior and entrance drive"
+               style="width:100%;height:260px;object-fit:cover;object-position:50% 50%;border-radius:2px;box-shadow:0 24px 70px rgba(13,42,64,.22);margin-top:36px;display:block" />
+        </div>
+        <div class="stats-card" id="overview-stats-card">
+          <div class="stats-grid">
+            <div class="stat-cell full"><div class="stat-value">10650 Diebold Rd, Fort Wayne, IN 46845</div><div class="stat-label">Address</div></div>
+            <div class="stat-cell"><div class="stat-value">2021</div><div class="stat-label">Year Opened</div></div>
+            <div class="stat-cell"><div class="stat-value">Five</div><div class="stat-label">Stories</div></div>
+            <div class="stat-cell full"><div class="stat-value">172 Total<small>88 Upscale Select-Service Rooms<br>84 Extended Stay Suites</small></div><div class="stat-label">Rooms</div></div>
+            <div class="stat-cell"><div class="stat-value">Fort Wayne, IN</div><div class="stat-label">Market</div></div>
+            <div class="stat-cell"><div class="stat-value">Fort Wayne North</div><div class="stat-label">Submarket</div></div>
+            <div class="stat-cell"><div class="stat-value">Upscale</div><div class="stat-label">Class</div></div>
+            <div class="stat-cell"><div class="stat-value">PUD</div><div class="stat-label">Zoning</div></div>
+            <div class="stat-cell"><div class="stat-value">57,012 SF</div><div class="stat-label">Gross Building Area</div></div>
+            <div class="stat-cell"><div class="stat-value">5.08 AC</div><div class="stat-label">Land Area</div></div>
+            <div class="stat-cell"><div class="stat-value">None</div><div class="stat-label">F&amp;B</div></div>
+            <div class="stat-cell"><div class="stat-value">4,208 SF</div><div class="stat-label">Meeting Space</div></div>
+            <div class="stat-cell full"><div class="stat-value" style="font-size:17px">Complimentary Breakfast, The Garden Grille &amp; Bar, Indoor Pool, Fitness Center, Business Center</div><div class="stat-label">Amenities</div></div>
+            <div class="stat-cell full"><div class="stat-value">325 Spaces<small>Self Parking &ndash; Complimentary</small></div><div class="stat-label">Parking</div></div>
+            <div class="stat-cell"><div class="stat-value">Fee Simple</div><div class="stat-label">Interest Conveyed</div></div>
+            <div class="stat-cell"><div class="stat-value">Non-Union</div><div class="stat-label">Labor</div></div>
+            <div class="stat-cell"><div class="stat-value" style="font-size:17px">Blue Flame Hospitality</div><div class="stat-label">Owner</div></div>
+            <div class="stat-cell"><div class="stat-value" style="font-size:17px">Hilton Worldwide</div><div class="stat-label">Affiliation</div></div>
+            <div class="stat-cell full"><div class="stat-value" style="font-size:17px">Blue Flame Hospitality (Unencumbered)</div><div class="stat-label">Management</div></div>
+            <div class="stat-cell full"><div class="stat-value">Masonry</div><div class="stat-label">Construction Type</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section bg-white" id="gallery" style="padding-top:0;padding-bottom:0">
+    <div class="bleed gallery-grid">
+      <div class="g-item" style="grid-column:1;grid-row:1 / span 2">
+        <img src="images/gallery-lounge.jpg" alt="Lobby lounge with fireplace and sectional seating" />
+        <div class="g-caption">Lobby Lounge</div>
+      </div>
+      <div class="g-item" style="grid-column:2;grid-row:1">
+        <img src="images/gallery-lobby.jpg" alt="Shared lobby and arrival area" />
+        <div class="g-caption">Shared Lobby &amp; Arrival</div>
+      </div>
+      <div class="g-item" style="grid-column:3;grid-row:1">
+        <img src="images/gallery-kitchen.jpg" alt="Home2 Suites in-suite kitchen with full-size refrigerator and work desk" />
+        <div class="g-caption">Home2 Suites In-Suite Kitchen</div>
+      </div>
+      <div class="g-item" style="grid-column:2;grid-row:2">
+        <img src="images/gallery-grille.jpg" alt="The Garden Grille &amp; Bar dining room" />
+        <div class="g-caption">The Garden Grille &amp; Bar</div>
+      </div>
+      <div class="g-item" style="grid-column:3;grid-row:2">
+        <img src="images/gallery-pool.jpg" alt="Indoor pool" />
+        <div class="g-caption">Indoor Pool</div>
+      </div>
+      <div class="g-item" style="grid-column:1;grid-row:3">
+        <img src="images/gallery-fitness.jpg" alt="Fitness center with cardio equipment" />
+        <div class="g-caption">Fitness Center</div>
+      </div>
+      <div class="g-item" style="grid-column:2 / span 2;grid-row:3">
+        <img src="images/gallery-meeting.jpg" alt="Meeting and event space set for a banquet" />
+        <div class="g-caption">Meeting &amp; Event Space</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTMENT HIGHLIGHTS -->
+  <section class="section bg-sand" id="highlights">
+    <div class="wrap">
+      <h2 class="h2" style="font-size:clamp(40px,5.4vw,66px)">Investment Highlights</h2>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT 1: COMPETITIVE SET DOMINANCE AND CLIMBING CASH FLOW -->
+  <section class="section highlight-section bg-white">
+    <div class="wrap">
+      <div class="two-col" style="align-items:stretch">
+        <div style="display:flex;flex-direction:column">
+          <h2 class="h2">Competitive Set Dominance and Climbing Cash Flow</h2>
+          <p class="lead" style="max-width:68ch;margin-top:28px">The Home2 Suites and Hilton Garden Inn ranked #1 in their respective competitive sets for annual RevPAR in each year from 2023 through 2025, with RevPAR penetration indices exceeding 135%. Momentum remains strong, with year-to-date NOI increasing 34.7% year on year through September 2026.</p>
+          <div class="stat-callout-row">
+            <div class="stat-callout">
+              <div class="stat-callout-num">34.7%</div>
+              <div class="stat-callout-text">NOI Growth Year on Year<span>YTD September 2026</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="side-photos x-tall">
+          <div class="side-photo">
+            <div class="photo-frame">
+              <img src="images/h1-hgi-exterior.jpg" alt="Hilton Garden Inn entrance and porte-cochère at dusk" />
+              <div class="photo-label">Hilton Garden Inn Entrance</div>
+            </div>
+          </div>
+          <div class="side-photo">
+            <div class="photo-frame">
+              <img src="images/h1-h2-exterior.jpg" alt="Home2 Suites exterior at dusk" />
+              <div class="photo-label">Home2 Suites Exterior</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT 2: MAJOR INVESTMENT HEADLINED BY $2 BILLION GOOGLE DATA CENTER -->
+  <section class="section highlight-section bg-sand">
+    <div class="wrap">
+      <div class="two-col" style="align-items:stretch">
+        <div style="display:flex;flex-direction:column">
+          <h2 class="h2">Major Investment Headlined by $2 Billion Google Data Center</h2>
+          <p class="lead" style="max-width:68ch;margin-top:28px">Google&rsquo;s $2 billion data center campus in southeastern Fort Wayne is now partially operational, with construction continuing. The project is creating thousands of construction jobs and hundreds of permanent operational roles.</p>
+          <p class="lead" style="max-width:68ch;margin-top:20px">Just north of downtown, the planned 29-acre North River mixed-use district includes a 160,000-square-foot fieldhouse projected to generate approximately 54,000 hotel room nights and $36 million in annual economic impact, according to a city-cited feasibility study.</p>
+          <p class="lead" style="max-width:68ch;margin-top:20px">Healthcare investment includes IU Health&rsquo;s $421 million, 140-bed hospital, scheduled to open in May 2027, Parkview&rsquo;s partnership with Cincinnati Children&rsquo;s to expand pediatric services, and maternity care expansions at Dupont Hospital and Parkview Randallia.</p>
+        </div>
+        <div class="side-photos x-tall">
+          <div class="side-photo">
+            <div class="photo-frame">
+              <img src="images/m-google.jpg" alt="Aerial view of the Google data center campus under construction in Fort Wayne" />
+              <div class="photo-label">$2B Google Data Center Campus</div>
+            </div>
+          </div>
+          <div class="side-photo">
+            <div class="photo-frame">
+              <img src="images/m-north-river.jpg" alt="Rendering of the planned North River mixed-use district" />
+              <div class="photo-label">North River Mixed-Use District</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-pair">
+        <div class="photo-frame">
+          <img src="images/m-iu-health.jpg" alt="Rendering of the new IU Health hospital in Fort Wayne" />
+          <div class="photo-label">IU Health Hospital &mdash; Opening May 2027</div>
+        </div>
+        <div class="photo-frame">
+          <img src="images/m-cincinnati.jpg" alt="Cincinnati Children's critical care building" />
+          <div class="photo-label">Cincinnati Children&rsquo;s Partnership</div>
+        </div>
+      </div>
+
+      <div class="awards-row">
+        <div class="award-card">
+          <div class="award-num">#1</div>
+          <p class="award-title">Fastest-Growing Large City in the Midwest</p>
+          <div class="award-src">U.S. Census Bureau data, 2026</div>
+        </div>
+        <div class="award-card">
+          <div class="award-num">TOP 25</div>
+          <p class="award-title">Fastest-Growing U.S. Metros For Jobs And New Talent</p>
+          <div class="award-src">LinkedIn, 2025</div>
+        </div>
+        <div class="award-card">
+          <div class="award-num">TOP 25</div>
+          <p class="award-title">Cities Adding the Most High-Income Households</p>
+          <div class="award-src">SmartAsset, 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT 3: AT THE HEART OF THE REGION'S HEALTHCARE EPICENTER -->
+  <section class="highlight-section bg-sand" id="location" style="padding:0">
+    <img class="location-band" src="images/location-band.jpg" alt="Aerial view of Fort Wayne, Indiana" />
+
+    <div style="padding:0 var(--pad)">
+      <div class="location-split">
+        <h2 class="h2 location-title">At the Heart of the Region&rsquo;s Healthcare Epicenter</h2>
+        <div class="location-info">
+          <p class="lead">The Property is strategically located a short walk away from Parkview Regional Medical Center, Fort Wayne&rsquo;s largest hospital campus by bed count and Parkview Health&rsquo;s flagship hospital. The 115-acre campus includes the region&rsquo;s first dedicated orthopedic hospital and only dedicated heart hospital, along with specialized cancer, women&rsquo;s, and children&rsquo;s care facilities. Parkview Health alone serves a regional population of more than 1.3 million and employs more than 17,500 people across its system.</p>
+          <p class="lead" style="margin-top:20px">Fort Wayne serves as the regional healthcare hub for northeast Indiana, northwest Ohio, and southern Michigan. Additionally, the Property benefits from nearby Dupont Hospital (~7 minutes) and the broader presence of Parkview Hospital Randallia (~17 minutes), Lutheran Hospital (~18 minutes), and Lutheran Downtown Hospital (~18 minutes).</p>
+          <ul class="callout-list" id="location-callouts">
+            <li data-index="0"><span class="dot"></span> Parkview Regional Medical Center (a short walk)</li>
+            <li data-index="1"><span class="dot"></span> Dupont Hospital (~7 minutes)</li>
+            <li data-index="2"><span class="dot"></span> Allen County War Memorial Coliseum (~12 minutes)</li>
+            <li data-index="3"><span class="dot"></span> Downtown Fort Wayne (~15 minutes)</li>
+            <li data-index="4"><span class="dot"></span> Lutheran Downtown Hospital (~18 minutes)</li>
+            <li data-index="5"><span class="dot"></span> Fort Wayne International Airport (~30 minutes)</li>
+            <li><span class="dot"></span> Parkview Hospital Randallia (~17 minutes)</li>
+            <li><span class="dot"></span> Lutheran Hospital (~18 minutes)</li>
+          </ul>
+        </div>
+        <div class="location-cards" id="location-cards">
+          <div class="loc-card" data-index="0">
+            <img class="loc-photo" src="images/loc-parkview.jpg" alt="Parkview Regional Medical Center" />
+            <div class="loc-card-overlay">
+              <div class="loc-logo"><img src="images/logos/parkview.svg" alt="Parkview Regional Medical Center"></div>
+              <div class="loc-card-meta">
+                <div class="loc-card-title">Parkview Regional Medical Center</div>
+                <div class="loc-card-desc">A short walk</div>
+              </div>
+            </div>
+          </div>
+          <div class="loc-card" data-index="1">
+            <img class="loc-photo" src="images/loc-dupont.jpg" alt="Dupont Hospital" />
+            <div class="loc-card-overlay">
+              <div class="loc-logo"><img src="images/logos/dupont.svg" alt="Dupont Hospital"></div>
+              <div class="loc-card-meta">
+                <div class="loc-card-title">Dupont Hospital</div>
+                <div class="loc-card-desc">~7 minutes</div>
+              </div>
+            </div>
+          </div>
+          <div class="loc-card" data-index="2">
+            <img class="loc-photo" src="images/loc-coliseum.jpg" alt="Allen County War Memorial Coliseum" />
+            <div class="loc-card-overlay">
+              <div class="loc-logo"><img src="images/logos/coliseum.svg" alt="Allen County War Memorial Coliseum"></div>
+              <div class="loc-card-meta">
+                <div class="loc-card-title">Allen County War Memorial Coliseum</div>
+                <div class="loc-card-desc">~12 minutes</div>
+              </div>
+            </div>
+          </div>
+          <div class="loc-card" data-index="3">
+            <img class="loc-photo" src="images/loc-downtown.jpg" alt="Downtown Fort Wayne skyline" />
+            <div class="loc-card-overlay">
+              <div class="loc-logo"><img src="images/logos/fort-wayne.svg" alt="City of Fort Wayne"></div>
+              <div class="loc-card-meta">
+                <div class="loc-card-title">Downtown Fort Wayne</div>
+                <div class="loc-card-desc">~15 minutes</div>
+              </div>
+            </div>
+          </div>
+          <div class="loc-card" data-index="4">
+            <img class="loc-photo" src="images/loc-lutheran.jpg" alt="Lutheran Downtown Hospital" />
+            <div class="loc-card-overlay">
+              <div class="loc-logo"><img src="images/logos/lutheran.svg" alt="Lutheran Downtown Hospital"></div>
+              <div class="loc-card-meta">
+                <div class="loc-card-title">Lutheran Downtown Hospital</div>
+                <div class="loc-card-desc">~18 minutes</div>
+              </div>
+            </div>
+          </div>
+          <div class="loc-card" data-index="5">
+            <img class="loc-photo" src="images/loc-airport.jpg" alt="Fort Wayne International Airport" />
+            <div class="loc-card-overlay">
+              <div class="loc-logo"><img src="images/logos/airport.svg" alt="Fort Wayne International Airport"></div>
+              <div class="loc-card-meta">
+                <div class="loc-card-title">Fort Wayne International Airport</div>
+                <div class="loc-card-desc">~30 minutes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT 3 (cont.): PARKVIEW CAMPUS PHOTOGRAPHY -->
+  <section class="section highlight-section bg-white" style="padding-top:clamp(40px,6vh,72px)">
+    <div class="wrap">
+      <div class="photo-pair" style="grid-template-columns:repeat(3,1fr);margin-top:0">
+        <div class="photo-frame">
+          <img src="images/m-parkview-women.jpg" alt="Parkview Women's and Children's Hospital" />
+          <div class="photo-label">Parkview Women&rsquo;s &amp; Children&rsquo;s Hospital</div>
+        </div>
+        <div class="photo-frame">
+          <img src="images/m-parkview-randallia.jpg" alt="Parkview Hospital Randallia" />
+          <div class="photo-label">Parkview Hospital Randallia</div>
+        </div>
+        <div class="photo-frame">
+          <img src="images/m-lutheran-aerial.jpg" alt="Aerial view of Lutheran Downtown Hospital" />
+          <div class="photo-label">Lutheran Downtown Hospital</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT 4: RAPID OCCUPANCY AND RATE GROWTH IN FORT WAYNE -->
+  <section class="section highlight-section bg-sand">
+    <div class="wrap">
+      <div class="two-col" style="align-items:stretch">
+        <div style="display:flex;flex-direction:column">
+          <h2 class="h2">Rapid Occupancy and Rate Growth in Fort Wayne</h2>
+          <p class="lead" style="max-width:68ch;margin-top:28px">Fort Wayne&rsquo;s hotel market is experiencing substantial growth driven by rising occupancy and room rates. As of September 2026, year-to-date occupancy has reached 67.0% and ADR increased by 7.4%, generating 23.9% RevPAR growth. Room demand also increased 12.1% against a 2.9% decline in available supply.</p>
+          <p class="lead" style="max-width:68ch;margin-top:20px">Fort Wayne&rsquo;s exceptional long-term lodging outlook is bolstered by expanding healthcare infrastructure, major corporate investment, and a strengthening convention and sports calendar. Visit Fort Wayne booked 42,000 future hotel room nights tied to various meetings, conventions, and sporting events during 2025, nearly double the prior year&rsquo;s booking production.</p>
+          <div class="stat-callout-row">
+            <div class="stat-callout">
+              <div class="stat-callout-num">23.9%</div>
+              <div class="stat-callout-text">Fort Wayne Market RevPAR Growth Year on Year<span>YTD September 2026</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="side-photos x-tall">
+          <div class="side-photo">
+            <div class="photo-frame">
+              <img src="images/m-grand-wayne.jpg" alt="Grand Wayne Convention Center at night" />
+              <div class="photo-label">Grand Wayne Convention Center</div>
+            </div>
+          </div>
+          <div class="side-photo">
+            <div class="photo-frame">
+              <img src="images/m-coliseum-aerial.jpg" alt="Aerial view of the Allen County War Memorial Coliseum" />
+              <div class="photo-label">Allen County War Memorial Coliseum</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="photo-frame" style="margin-top:40px">
+        <img class="shot" src="images/m-parkview-field.jpg" alt="Parkview Field and downtown Fort Wayne from above" style="height:clamp(280px,34vw,520px)" />
+        <div class="photo-label">Parkview Field, Downtown Fort Wayne</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT 5: RECENT VINTAGE, PREMIUM-BRANDED HOTEL WITH DUAL-BRAND SYNERGIES -->
+  <section class="section highlight-section bg-white">
+    <div class="wrap">
+      <div class="vintage-grid">
+        <div style="grid-area:copy">
+          <h2 class="h2">Recent Vintage, Premium-Branded Hotel with Dual-Brand Synergies</h2>
+          <p class="lead" style="max-width:68ch;margin-top:28px">Built in 2021, the Property is the newest hotel within a five-mile radius, offering a contemporary Hilton product with limited anticipated near-term capital requirements. Its 88 upscale guestrooms and 84 extended-stay suites accommodate a wide range of stay lengths, while its recent construction provides a competitive advantage over older surrounding hotels. The dual-brand configuration creates opportunities to share staffing, sales efforts, and back-of-house resources within a single asset.</p>
+        </div>
+        <div class="photo-frame" style="grid-area:a">
+          <img src="images/h5-campus.jpg" alt="Dual-branded hotel campus seen from the entrance drive" />
+          <div class="photo-label">Dual-Brand Campus</div>
+        </div>
+        <div class="photo-frame" style="grid-area:c">
+          <img src="images/h5-h2-suite.jpg" alt="Home2 Suites extended-stay studio suite" />
+          <div class="photo-label">Home2 Suites Studio Suite</div>
+        </div>
+        <div class="photo-frame" style="grid-area:b">
+          <img src="images/h5-hgi-room.jpg" alt="Hilton Garden Inn guestroom" />
+          <div class="photo-label">Hilton Garden Inn Guestroom</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND -->
+  <section class="section brand-section" id="brand">
+    <div class="wrap" style="position:relative">
+      <div class="brand-head">
+        <h2 class="h2">Two of the Strongest Brands in Hilton&rsquo;s Portfolio</h2>
+        <div class="brand-logos">
+          <img class="brand-logo" src="images/logo-home2-white.svg" alt="Home2 Suites by Hilton" />
+          <span class="rule"></span>
+          <img class="brand-logo" src="images/logo-hgi-white.svg" alt="Hilton Garden Inn" />
+        </div>
+      </div>
+      <p class="lead" style="color:rgba(255,255,255,.84);max-width:none;margin-top:24px">Hilton Garden Inn and Home2 Suites are arguably two of the strongest brands within Hilton&rsquo;s portfolio. Both benefit from Hilton&rsquo;s global network of more than 9,400 properties across 144 countries and territories and more than 260 million Hilton Honors members.</p>
+      <div class="brand-stats">
+        <div class="brand-stat"><div class="v">9,400+</div><div class="l">Properties Worldwide</div></div>
+        <div class="brand-stat"><div class="v">144</div><div class="l">Countries &amp; Territories</div></div>
+        <div class="brand-stat"><div class="v">260M+</div><div class="l">Hilton Honors Members</div></div>
+      </div>
+      <div class="brand-logo-grid" aria-label="Hilton portfolio brands">
+        <div class="brand-logo-tile"><img src="images/hilton/waldorfastoria.svg" alt="Waldorf Astoria Hotels &amp; Resorts" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/lxr-final.svg" alt="LXR Hotels &amp; Resorts" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/conrad-hotels-and-resort.svg" alt="Conrad Hotels &amp; Resorts" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/signia-hilton.svg" alt="Signia by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/hiltonhotelsandresorts.svg" alt="Hilton Hotels &amp; Resorts" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/curio.svg" alt="Curio Collection by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/canopy.svg" alt="Canopy by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/doubletree.svg" alt="DoubleTree by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/tapestry.svg" alt="Tapestry Collection by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/embassysuites.svg" alt="Embassy Suites by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/tempobyhilton.svg" alt="Tempo by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/motto.svg" alt="Motto by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile is-subject"><img src="images/hilton/hiltongardeninn.svg" alt="Hilton Garden Inn" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/hamptoninn.svg" alt="Hampton by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/tru-by-hilton.svg" alt="Tru by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/spark-logo.svg" alt="Spark by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/homewoodsuites.svg" alt="Homewood Suites by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile is-subject"><img src="images/hilton/home2suites.svg" alt="Home2 Suites by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/livsmart.svg" alt="LivSmart Studios by Hilton" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/hilton-grand-vacations.svg" alt="Hilton Grand Vacations" loading="lazy"></div>
+        <div class="brand-logo-tile"><img src="images/hilton/hilton-honors.svg" alt="Hilton Honors" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT 6: CLEAN INVESTMENT OPPORTUNITY -->
+  <section class="section highlight-section bg-white">
+    <div class="wrap">
+      <div class="two-col" style="align-items:center">
+        <div>
+          <h2 class="h2">Clean Investment Opportunity</h2>
+          <p class="lead" style="max-width:68ch;margin-top:28px">The non-union, fee-simple interest in the Home2 Suites/Hilton Garden Inn is being offered free and clear of existing management and financing, affording new ownership maximum optionality in the future operation and capitalization of the Hotel.</p>
+        </div>
+        <div class="photo-frame">
+          <img class="shot" src="images/h6-reception.jpg" alt="Hotel reception and lobby" style="height:clamp(280px,32vw,460px)" />
+          <div class="photo-label">Reception &amp; Lobby</div>
+        </div>
+      </div>
+      <div class="photo-frame" style="margin-top:64px">
+        <img class="shot" src="images/h6-terrace.jpg" alt="Outdoor terrace with lounge seating at sunset" style="height:clamp(300px,38vw,580px)" />
+        <div class="photo-label">Outdoor Terrace</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section bg-sand" id="contact">
+    <div class="wrap">
+      <h2 class="h2">Access the<br><span class="em">Offering Memorandum</span></h2>
+      <p>To receive the full Offering Memorandum and access data room materials, please execute the Confidentiality Agreement below.</p>
+      <div class="cta-buttons">
+        <!-- TODO: replace both CA hrefs with the RightSignature link + CA document for this deal -->
+        <a href="#" class="btn btn-cta">Sign CA Online</a>
+        <a href="#" class="btn btn-ghost">Download CA (DOCX)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer section" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="footer-grid">
+        <img class="footer-logo" src="images/hwe-logo-white.svg" alt="Hodges Ward Elliott" />
+        <div>
+          <div class="footer-col-title">Exclusive Representatives</div>
+          <div class="contact-grid">
+            <div><div class="contact-name">Clint Hodges</div><div class="contact-title">Executive Managing Director</div><a class="contact-email" href="mailto:chodges@hodgeswardelliott.com">chodges@hodgeswardelliott.com</a></div>
+            <div><div class="contact-name">Kevin Felmley</div><div class="contact-title">Analyst</div><a class="contact-email" href="mailto:kfelmley@hodgeswardelliott.com">kfelmley@hodgeswardelliott.com</a></div>
+          </div>
+          <div class="footer-col-title">Acquisition Financing Advisor</div>
+          <div class="contact-grid" style="margin-bottom:0">
+            <div><div class="contact-name">Michael Britvan</div><div class="contact-title">Executive Managing Director</div><a class="contact-email" href="mailto:mbritvan@hodgeswardelliott.com">mbritvan@hodgeswardelliott.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom bleed" style="margin-top:36px;padding-top:40px">&copy; 2026 Hodges Ward Elliott. All rights reserved. This offering is subject to prior sale, price change, or withdrawal without notice.</div>
+  </footer>
+
+  <!-- ================= NAV SCRIPT ================= -->
+  <script id="hwe-nav-script">
+  (function(){
+    /* =========================  CONFIG — EDIT ME  ========================= */
+    var NAV = {
+      logo: "images/hwe-logo-white.svg",   // path to a WHITE logo (SVG/PNG)
+      logoAlt: "Hodges Ward Elliott",
+      homeHref: "#top",                     // where the logo links
+      scrollThreshold: 60,                  // px scrolled before the bar collapses
+      links: [
+        { label: "Overview",   href: "#overview"   },
+        { label: "Gallery",    href: "#gallery"    },
+        { label: "Highlights", href: "#highlights" },
+        { label: "Location",   href: "#location"   },
+        { label: "Brand",      href: "#brand"      },
+        { label: "Sign CA",    href: "#contact", cta: true }
+      ]
+    };
+    /* ===================================================================== */
+
+    var nav        = document.getElementById('nav'),
+        navToggle  = document.getElementById('navToggle'),
+        navMenu    = document.getElementById('navMenu'),
+        navLinks   = document.getElementById('navLinks'),
+        logoImg    = document.getElementById('nav-logo-img'),
+        logoLink   = nav.querySelector('.nav-logo');
+
+    if(logoImg){ logoImg.src = NAV.logo; logoImg.alt = NAV.logoAlt; }
+    if(logoLink){ logoLink.setAttribute('href', NAV.homeHref); }
+
+    if(NAV.links && NAV.links.length){
+      var inline = '', menu = '';
+      NAV.links.forEach(function(l){
+        inline += '<a'+(l.cta?' class="navcta"':'')+' href="'+l.href+'">'+l.label+'</a>';
+        menu   += '<a'+(l.cta?' class="menu-cta"':'')+' href="'+l.href+'">'+l.label+'</a>';
+      });
+      if(navLinks) navLinks.innerHTML = inline;
+      if(navMenu)  navMenu.innerHTML  = menu;
+    }
+
+    function closeMenu(){ navMenu.classList.remove('open'); navToggle.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); }
+    navToggle.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=navMenu.classList.toggle('open');
+      navToggle.classList.toggle('open',open);
+      navToggle.setAttribute('aria-expanded',open?'true':'false');
+    });
+    navMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',closeMenu); });
+    document.addEventListener('click',function(e){ if(!nav.contains(e.target)) closeMenu(); });
+
+    function onScroll(){
+      if(window.scrollY>NAV.scrollThreshold){ nav.classList.add('scrolled'); }
+      else { nav.classList.remove('scrolled'); closeMenu(); }
+    }
+    window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  })();
+  </script>
+
+  <script>
+    // Keep the overview photo bottom-aligned with the property snapshot card.
+    function syncOverviewPhotoHeight() {
+      var card = document.getElementById("overview-stats-card");
+      var col = document.getElementById("overview-copy-col");
+      var img = document.getElementById("overview-photo");
+      if (!card || !col || !img) return;
+      if (window.innerWidth <= 760) { img.style.height = "260px"; return; }
+      var priorHeight = img.style.height;
+      img.style.height = "0px";
+      var colHeightWithoutImg = col.offsetHeight;
+      img.style.height = priorHeight || "260px";
+      var cardHeight = card.offsetHeight;
+      var target = cardHeight - colHeightWithoutImg;
+      img.style.height = (target >= 220 ? target : 220) + "px";
+    }
+    window.addEventListener("load", syncOverviewPhotoHeight);
+    window.addEventListener("resize", syncOverviewPhotoHeight);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncOverviewPhotoHeight);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      syncOverviewPhotoHeight();
+
+      // Hero parallax
+      var heroSection = document.getElementById("top");
+      var heroImg = document.getElementById("hero-img");
+      if (heroSection && heroImg) {
+        var ticking = false;
+        function updateParallax() {
+          var rect = heroSection.getBoundingClientRect();
+          if (rect.bottom > 0 && rect.top < window.innerHeight) {
+            var offset = Math.max(0, -rect.top) * 0.35;
+            heroImg.style.transform = "translateY(" + offset + "px)";
+          }
+          ticking = false;
+        }
+        window.addEventListener("scroll", function () {
+          if (!ticking) { window.requestAnimationFrame(updateParallax); ticking = true; }
+        }, { passive: true });
+        updateParallax();
+      }
+
+      // Location bullets <-> cards: hovering either one lights up the matching pair
+      // and reveals that card's photo in full color.
+      var locItems = document.querySelectorAll("#location-callouts li[data-index]");
+      var locCards = document.querySelectorAll("#location-cards .loc-card");
+      function clearLocation() {
+        locItems.forEach(function (li) { li.classList.remove("active"); });
+        locCards.forEach(function (c) { c.classList.remove("active"); });
+      }
+      function selectLocation(i) {
+        clearLocation();
+        var item = document.querySelector('#location-callouts li[data-index="' + i + '"]');
+        var card = document.querySelector('#location-cards .loc-card[data-index="' + i + '"]');
+        if (item) item.classList.add("active");
+        if (card) card.classList.add("active");
+      }
+      function bindLoc(el) {
+        el.addEventListener("mouseenter", function () { selectLocation(el.dataset.index); });
+      }
+      locItems.forEach(bindLoc);
+      locCards.forEach(function (card) {
+        bindLoc(card);
+        card.addEventListener("mouseleave", clearLocation);
+      });
+      var callouts = document.getElementById("location-callouts");
+      if (callouts) callouts.addEventListener("mouseleave", clearLocation);
+    });
+  </script>
+
+  <script>
+    // Scroll-reveal: scale + fade content in as it enters the viewport.
+    (function () {
+      var SEL = ".h2, .lead, .stats-card, .g-item, .photo-frame, .shot, .brand-lockup, "
+              + ".side-photo, #overview-photo, .brand-stat, .brand-logo-grid, .location-cards, "
+              + ".callout-list, .stat-callout, .cta-buttons, .footer-grid, .award-card";
+      var els = Array.prototype.slice.call(document.querySelectorAll(SEL)).filter(function (el) {
+        return !el.closest("#top") && !el.closest(".nav") && !el.closest(".photo-frame");
+      });
+      if (!els.length) return;
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce || !("IntersectionObserver" in window)) return; // leave content fully visible
+      var STAGGER = { "gallery-grid": 1, "brand-stats": 1, "stat-callout-row": 1, "awards-row": 1, "photo-pair": 1 };
+      els.forEach(function (el) {
+        el.classList.add("reveal");
+        var p = el.parentElement;
+        if (p && STAGGER[p.className.split(" ")[0]] || (p && p.classList.contains("gallery-grid"))) {
+          var idx = Array.prototype.indexOf.call(p.children, el);
+          el.style.transitionDelay = (idx * 70) + "ms";
+        }
+      });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
+  <script>
+    // Accolade cards: 3D tilt toward the pointer (skipped for reduced motion and touch-only devices)
+    (function () {
+      var cards = document.querySelectorAll(".award-card");
+      if (!cards.length) return;
+      if (window.matchMedia && (window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+          !window.matchMedia("(hover: hover)").matches)) return;
+      var MAX = 9; // degrees
+      cards.forEach(function (card) {
+        card.addEventListener("pointermove", function (e) {
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+          card.classList.add("is-tilting");
+          card.style.setProperty("--ry", ((px - .5) * 2 * MAX).toFixed(2) + "deg");
+          card.style.setProperty("--rx", ((.5 - py) * 2 * MAX).toFixed(2) + "deg");
+          card.style.setProperty("--gx", (px * 100).toFixed(1) + "%");
+          card.style.setProperty("--gy", (py * 100).toFixed(1) + "%");
+        });
+        card.addEventListener("pointerleave", function () {
+          card.classList.remove("is-tilting");
+          card.style.setProperty("--rx", "0deg");
+          card.style.setProperty("--ry", "0deg");
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
