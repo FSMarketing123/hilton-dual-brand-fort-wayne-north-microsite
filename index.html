@@ -350,8 +350,9 @@
   .location-info{padding:0;display:flex;flex-direction:column;justify-content:center}
   /* Equal-height rows so the card grid ends flush with the bullet list beside it */
   .location-cards{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;gap:18px;padding:0}
-  .loc-card{position:relative;overflow:hidden;min-height:200px;border-radius:2px;outline:none;
+  .loc-card{position:relative;overflow:hidden;min-height:200px;border-radius:2px;outline:none;cursor:pointer;
        transition:transform .3s ease,box-shadow .3s ease}
+  .loc-card:focus-visible{outline:3px solid var(--accent);outline-offset:2px;z-index:3}
   .loc-card img.loc-photo{width:100%;height:100%;object-fit:cover;display:block;
        filter:grayscale(1) contrast(1.05) brightness(.82);transition:transform .6s ease,filter .45s ease}
   .loc-card-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:64px;
@@ -370,6 +371,40 @@
        background:linear-gradient(to top, rgba(0,0,0,.68) 0%, rgba(0,0,0,0) 45%)}
   .loc-card:hover .loc-logo,.loc-card.active .loc-logo{transform:scale(.92)}
   .loc-card.active{z-index:2;box-shadow:0 22px 55px rgba(13,42,64,.35)}
+
+  /* Click pop-out: the card grows from its real on-screen slot to the centre
+     of the viewport (FLIP), showing the photo in full colour. */
+  .loc-popout-backdrop{position:fixed;inset:0;background:rgba(13,42,64,0);pointer-events:none;
+       transition:background .4s ease;z-index:490}
+  .loc-popout-backdrop.show{background:rgba(13,42,64,.72);pointer-events:auto}
+  .loc-popout-stage{position:fixed;z-index:491;border-radius:4px;overflow:hidden;background:#fff;
+       display:flex;flex-direction:column;box-shadow:0 30px 100px rgba(0,0,0,.45);
+       opacity:0;pointer-events:none;
+       transition:top .5s cubic-bezier(.22,.9,.28,1),left .5s cubic-bezier(.22,.9,.28,1),
+                  width .5s cubic-bezier(.22,.9,.28,1),height .5s cubic-bezier(.22,.9,.28,1),
+                  opacity .3s ease}
+  .loc-popout-stage.show{opacity:1;pointer-events:auto}
+  .po-media{flex:1 1 auto;min-height:0;position:relative;overflow:hidden}
+  .po-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .po-body{flex:0 0 auto;padding:clamp(18px,2.2vw,26px) clamp(20px,2.6vw,32px);
+       border-top:4px solid var(--accent)}
+  .po-head{display:flex;align-items:center;gap:20px}
+  .po-head .loc-logo{flex:0 0 auto;height:64px;width:150px;max-width:none;padding:10px 16px;
+       background:var(--primary);border-radius:3px;filter:none;transform:none}
+  .po-title{font-family:var(--font-cormorant);font-size:clamp(21px,2.1vw,28px);color:var(--primary);
+       font-weight:300;line-height:1.15;letter-spacing:.01em}
+  .po-dist{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;
+       text-transform:uppercase;color:var(--text);margin-top:6px}
+  .po-dist::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;
+       background:var(--accent);margin-right:9px;transform:translateY(-1px)}
+  .po-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:none;
+       background:rgba(13,42,64,.7);color:#fff;font-size:20px;line-height:1;cursor:pointer;z-index:2;
+       display:flex;align-items:center;justify-content:center;transition:background .2s}
+  .po-close:hover{background:var(--primary)}
+  @media(max-width:760px){
+    .po-head{flex-direction:column;align-items:flex-start;gap:12px}
+    .po-head .loc-logo{height:50px;width:120px}
+  }
 
   .callout-list{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
   .callout-list li{display:flex;align-items:baseline;gap:12px;font-size:15px;color:var(--text);
@@ -674,10 +709,10 @@
             <li data-index="1"><span class="dot"></span> Dupont Hospital (~7 minutes)</li>
             <li data-index="2"><span class="dot"></span> Allen County War Memorial Coliseum (~12 minutes)</li>
             <li data-index="3"><span class="dot"></span> Downtown Fort Wayne (~15 minutes)</li>
-            <li data-index="4"><span class="dot"></span> Lutheran Downtown Hospital (~18 minutes)</li>
-            <li data-index="5"><span class="dot"></span> Fort Wayne International Airport (~30 minutes)</li>
-            <li><span class="dot"></span> Parkview Hospital Randallia (~17 minutes)</li>
-            <li><span class="dot"></span> Lutheran Hospital (~18 minutes)</li>
+            <li data-index="4"><span class="dot"></span> Parkview Hospital Randallia (~17 minutes)</li>
+            <li data-index="5"><span class="dot"></span> Lutheran Hospital (~18 minutes)</li>
+            <li data-index="6"><span class="dot"></span> Lutheran Downtown Hospital (~18 minutes)</li>
+            <li data-index="7"><span class="dot"></span> Fort Wayne International Airport (~30 minutes)</li>
           </ul>
         </div>
         <div class="location-cards" id="location-cards">
@@ -722,6 +757,26 @@
             </div>
           </div>
           <div class="loc-card" data-index="4">
+            <img class="loc-photo" src="images/loc-randallia.jpg" alt="Parkview Hospital Randallia" />
+            <div class="loc-card-overlay">
+              <div class="loc-logo"><img src="images/logos/parkview-randallia.svg" alt="Parkview Hospital Randallia"></div>
+              <div class="loc-card-meta">
+                <div class="loc-card-title">Parkview Hospital Randallia</div>
+                <div class="loc-card-desc">~17 minutes</div>
+              </div>
+            </div>
+          </div>
+          <div class="loc-card" data-index="5">
+            <img class="loc-photo" src="images/loc-lutheran-hospital.jpg" alt="Lutheran Hospital" />
+            <div class="loc-card-overlay">
+              <div class="loc-logo"><img src="images/logos/lutheran-hospital.svg" alt="Lutheran Hospital"></div>
+              <div class="loc-card-meta">
+                <div class="loc-card-title">Lutheran Hospital</div>
+                <div class="loc-card-desc">~18 minutes</div>
+              </div>
+            </div>
+          </div>
+          <div class="loc-card" data-index="6">
             <img class="loc-photo" src="images/loc-lutheran.jpg" alt="Lutheran Downtown Hospital" />
             <div class="loc-card-overlay">
               <div class="loc-logo"><img src="images/logos/lutheran.svg" alt="Lutheran Downtown Hospital"></div>
@@ -731,7 +786,7 @@
               </div>
             </div>
           </div>
-          <div class="loc-card" data-index="5">
+          <div class="loc-card" data-index="7">
             <img class="loc-photo" src="images/loc-airport.jpg" alt="Fort Wayne International Airport" />
             <div class="loc-card-overlay">
               <div class="loc-logo"><img src="images/logos/airport.svg" alt="Fort Wayne International Airport"></div>
@@ -745,6 +800,9 @@
       </div>
     </div>
   </section>
+
+  <div class="loc-popout-backdrop" id="loc-popout-backdrop"></div>
+  <div class="loc-popout-stage" id="loc-popout-stage"></div>
 
   <!-- HIGHLIGHT 3 (cont.): PARKVIEW CAMPUS PHOTOGRAPHY -->
   <section class="section highlight-section bg-white" style="padding-top:clamp(40px,6vh,72px)">
@@ -1013,16 +1071,101 @@
         if (item) item.classList.add("active");
         if (card) card.classList.add("active");
       }
+      // Click pop-out: grows the card from its real slot to the centre of the
+      // screen and back again, so the photo can be read in full colour.
+      var popoutStage = document.getElementById("loc-popout-stage");
+      var popoutBackdrop = document.getElementById("loc-popout-backdrop");
+      var popoutOpenIndex = null;
+      var lastFocused = null;
+
+      function sizeStageToCard(card) {
+        var rect = card.getBoundingClientRect();
+        popoutStage.style.top = rect.top + "px";
+        popoutStage.style.left = rect.left + "px";
+        popoutStage.style.width = rect.width + "px";
+        popoutStage.style.height = rect.height + "px";
+      }
+
+      function openPopout(i) {
+        var card = document.querySelector('#location-cards .loc-card[data-index="' + i + '"]');
+        if (!card || !popoutStage || !popoutBackdrop || popoutOpenIndex === i) return;
+        var photo = card.querySelector(".loc-photo");
+        var logoImg = card.querySelector(".loc-logo img");
+        var title = card.querySelector(".loc-card-title").innerHTML;
+        var dist = card.querySelector(".loc-card-desc").innerHTML;
+
+        lastFocused = document.activeElement;
+        popoutStage.style.transition = "none";
+        popoutStage.innerHTML =
+          '<button class="po-close" aria-label="Close">&times;</button>' +
+          '<div class="po-media"><img src="' + photo.getAttribute("src") + '" alt="' + photo.getAttribute("alt") + '"></div>' +
+          '<div class="po-body"><div class="po-head">' +
+            '<div class="loc-logo"><img src="' + logoImg.getAttribute("src") + '" alt="' + logoImg.getAttribute("alt") + '"></div>' +
+            '<div><div class="po-title">' + title + '</div>' +
+            '<div class="po-dist">' + dist + ' from the Hotel</div></div>' +
+          '</div></div>';
+        popoutStage.setAttribute("role", "dialog");
+        popoutStage.setAttribute("aria-modal", "true");
+        popoutStage.setAttribute("aria-label", card.querySelector(".loc-card-title").textContent);
+
+        sizeStageToCard(card);
+        popoutStage.classList.add("show");
+        void popoutStage.offsetHeight;          // flush the start frame
+        popoutStage.style.transition = "";
+
+        var targetW = Math.min(window.innerWidth * 0.62, 760);
+        var targetH = Math.min(window.innerHeight * 0.86, 660);
+        if (window.innerWidth <= 760) { targetW = window.innerWidth - 32; targetH = Math.min(window.innerHeight * 0.86, 620); }
+        popoutStage.style.top = ((window.innerHeight - targetH) / 2) + "px";
+        popoutStage.style.left = ((window.innerWidth - targetW) / 2) + "px";
+        popoutStage.style.width = targetW + "px";
+        popoutStage.style.height = targetH + "px";
+        popoutBackdrop.classList.add("show");
+        popoutOpenIndex = i;
+        var closeBtn = popoutStage.querySelector(".po-close");
+        if (closeBtn) closeBtn.focus({ preventScroll: true });
+      }
+
+      function closePopout() {
+        if (popoutOpenIndex === null) return;
+        var card = document.querySelector('#location-cards .loc-card[data-index="' + popoutOpenIndex + '"]');
+        if (card) sizeStageToCard(card);
+        popoutBackdrop.classList.remove("show");
+        popoutStage.classList.remove("show");
+        clearLocation();
+        popoutOpenIndex = null;
+        if (lastFocused && lastFocused.focus) lastFocused.focus({ preventScroll: true });
+        lastFocused = null;
+        setTimeout(function () { if (popoutOpenIndex === null) popoutStage.innerHTML = ""; }, 520);
+      }
+
       function bindLoc(el) {
         el.addEventListener("mouseenter", function () { selectLocation(el.dataset.index); });
+        el.addEventListener("click", function () {
+          var i = parseInt(el.dataset.index, 10);
+          selectLocation(i);
+          if (popoutOpenIndex === i) closePopout(); else openPopout(i);
+        });
       }
       locItems.forEach(bindLoc);
       locCards.forEach(function (card) {
         bindLoc(card);
-        card.addEventListener("mouseleave", clearLocation);
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", card.querySelector(".loc-card-title").textContent + " — view details");
+        card.addEventListener("mouseleave", function () { if (popoutOpenIndex === null) clearLocation(); });
+        card.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); card.click(); }
+        });
       });
       var callouts = document.getElementById("location-callouts");
-      if (callouts) callouts.addEventListener("mouseleave", clearLocation);
+      if (callouts) callouts.addEventListener("mouseleave", function () { if (popoutOpenIndex === null) clearLocation(); });
+
+      popoutBackdrop.addEventListener("click", closePopout);
+      popoutStage.addEventListener("click", function (e) { if (e.target.closest(".po-close")) closePopout(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePopout(); });
+      window.addEventListener("scroll", closePopout, { passive: true });
+      window.addEventListener("resize", closePopout);
     });
   </script>
 
