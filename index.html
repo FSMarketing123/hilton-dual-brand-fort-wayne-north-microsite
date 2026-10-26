@@ -158,14 +158,21 @@
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 
   /* Overview — dual brand logo lockup */
-  .brand-lockup{display:flex;align-items:center;gap:clamp(22px,3.2vw,52px);flex-wrap:wrap}
+  .brand-lockup{display:flex;align-items:center;justify-content:center;gap:clamp(22px,3.2vw,52px);flex-wrap:wrap}
   .brand-lockup img{width:clamp(150px,15vw,210px);height:auto}
   .brand-lockup .rule{width:1px;height:62px;background:var(--divider)}
   @media(max-width:560px){.brand-lockup .rule{display:none}}
 
-  /* Overview: copy column, then a full-width photo beneath it */
-  .ov-body{max-width:78ch;margin-top:44px}
-  .ov-btns{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap}
+  /* Overview: centered logo lockup, copy across both columns, photo beneath */
+  .ov-body{margin-top:44px}
+  .ov-btns{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+
+  /* Body copy flowed across two columns so it fills the full content width
+     without running to unreadable 150-character lines. */
+  .lead-cols{column-count:2;column-gap:clamp(40px,5vw,72px)}
+  .lead-cols .lead{break-inside:avoid;margin:0 0 20px}
+  .lead-cols .lead:last-child{margin-bottom:0}
+  @media(max-width:860px){.lead-cols{column-count:1}}
   #overview-photo{width:100%;height:clamp(260px,34vw,460px);object-fit:cover;object-position:50% 50%;
        border-radius:2px;box-shadow:0 24px 70px rgba(13,42,64,.22);margin-top:48px;display:block}
 
@@ -206,6 +213,8 @@
 
   /* Highlights (no eyebrows — a short accent rule sits above each heading) */
   .highlight-section h2{max-width:24ch}
+  /* A heading that runs the full content width instead of the 24ch column */
+  .highlight-section h2.full-head{max-width:none}
   .highlight-section h2::before{content:"";display:block;width:56px;height:3px;background:var(--accent);margin-bottom:22px}
   @media(min-width:1100px){
     .highlight-section h2.one-line{max-width:none;white-space:nowrap}
@@ -283,12 +292,13 @@
 
   /* Location */
   .location-band{display:block;width:100%;height:clamp(300px,46vw,680px);object-fit:cover;object-position:50% 55%}
-  .location-split{display:grid;grid-template-columns:1fr 1.25fr;column-gap:clamp(40px,5vw,64px);align-items:start;
+  .location-split{display:grid;grid-template-columns:1fr 1.25fr;column-gap:clamp(40px,5vw,64px);align-items:stretch;
        max-width:1280px;margin:0 auto;padding:72px 0}
   .highlight-section h2.location-title{grid-column:1 / -1;max-width:none;margin-bottom:36px}
   .location-info{padding:0;display:flex;flex-direction:column;justify-content:center}
-  .location-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:0}
-  .loc-card{position:relative;overflow:hidden;height:230px;border-radius:2px;outline:none;
+  /* Equal-height rows so the card grid ends flush with the bullet list beside it */
+  .location-cards{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;gap:18px;padding:0}
+  .loc-card{position:relative;overflow:hidden;min-height:200px;border-radius:2px;outline:none;
        transition:transform .3s ease,box-shadow .3s ease}
   .loc-card img.loc-photo{width:100%;height:100%;object-fit:cover;display:block;
        filter:grayscale(1) contrast(1.05) brightness(.82);transition:transform .6s ease,filter .45s ease}
@@ -368,8 +378,8 @@
 
   @media(max-width:900px){
     .location-split{grid-template-columns:1fr !important;gap:0 !important;padding:56px 0 !important}
-    .location-cards{gap:12px;padding:0}
-    .loc-card{height:190px}
+    .location-cards{gap:12px;padding:0;grid-auto-rows:auto}
+    .loc-card{min-height:190px;height:190px}
     .location-info{padding:0 0 32px !important}
     .brand-stats{grid-template-columns:1fr}
   }
@@ -431,8 +441,10 @@
         <img src="images/logo-hgi-color.svg" alt="Hilton Garden Inn" />
       </div>
       <div class="ov-body">
+        <div class="lead-cols">
           <p class="lead">Hodges Ward Elliott (&ldquo;HWE&rdquo;) is pleased to present the opportunity to acquire the dual-branded 172-room Home2 Suites/Hilton Garden Inn Fort Wayne North (&ldquo;Property&rdquo; or &ldquo;Hotel&rdquo;). Built in 2021, the Property sits directly adjacent to Parkview Regional Medical Center, Fort Wayne&rsquo;s largest hospital campus by bed count and Parkview Health&rsquo;s flagship medical campus.</p>
-          <p class="lead" style="margin-top:20px">Located off I-69 on Diebold Road, the Hotel also offers convenient access to the Allen County War Memorial Coliseum (~12 minutes), Downtown Fort Wayne (~15 minutes), and Fort Wayne International Airport (~30 minutes). Offered free and clear of existing management and financing, the Property combines recent construction, Hilton brand strength, dual-brand synergies, and growing cash flow in a market benefiting from significant healthcare, corporate, and sports investment.</p>
+          <p class="lead">Located off I-69 on Diebold Road, the Hotel also offers convenient access to the Allen County War Memorial Coliseum (~12 minutes), Downtown Fort Wayne (~15 minutes), and Fort Wayne International Airport (~30 minutes). Offered free and clear of existing management and financing, the Property combines recent construction, Hilton brand strength, dual-brand synergies, and growing cash flow in a market benefiting from significant healthcare, corporate, and sports investment.</p>
+        </div>
           <div class="ov-btns">
             <!-- TODO: replace both CA hrefs with the RightSignature link + CA document for this deal -->
             <a href="#contact" class="btn btn-cta">Sign CA Online</a>
@@ -550,26 +562,21 @@
   <!-- HIGHLIGHT 2: MAJOR INVESTMENT HEADLINED BY $2 BILLION GOOGLE DATA CENTER -->
   <section class="section highlight-section bg-sand">
     <div class="wrap">
-      <div class="two-col" style="align-items:stretch">
-        <div style="display:flex;flex-direction:column">
-          <h2 class="h2">Major Investment Headlined by $2 Billion Google Data Center</h2>
-          <p class="lead" style="max-width:68ch;margin-top:28px">Google&rsquo;s $2 billion data center campus in southeastern Fort Wayne is now partially operational, with construction continuing. The project is creating thousands of construction jobs and hundreds of permanent operational roles.</p>
-          <p class="lead" style="max-width:68ch;margin-top:20px">Just north of downtown, the planned 29-acre North River mixed-use district includes a 160,000-square-foot fieldhouse projected to generate approximately 54,000 hotel room nights and $36 million in annual economic impact, according to a city-cited feasibility study.</p>
-          <p class="lead" style="max-width:68ch;margin-top:20px">Healthcare investment includes IU Health&rsquo;s $421 million, 140-bed hospital, scheduled to open in May 2027, Parkview&rsquo;s partnership with Cincinnati Children&rsquo;s to expand pediatric services, and maternity care expansions at Dupont Hospital and Parkview Randallia.</p>
+      <h2 class="h2 full-head">Major Investment Headlined by $2 Billion Google Data Center</h2>
+      <div class="lead-cols" style="margin-top:28px">
+        <p class="lead">Google&rsquo;s $2 billion data center campus in southeastern Fort Wayne is now partially operational, with construction continuing. The project is creating thousands of construction jobs and hundreds of permanent operational roles.</p>
+        <p class="lead">Just north of downtown, the planned 29-acre North River mixed-use district includes a 160,000-square-foot fieldhouse projected to generate approximately 54,000 hotel room nights and $36 million in annual economic impact, according to a city-cited feasibility study.</p>
+        <p class="lead">Healthcare investment includes IU Health&rsquo;s $421 million, 140-bed hospital, scheduled to open in May 2027, Parkview&rsquo;s partnership with Cincinnati Children&rsquo;s to expand pediatric services, and maternity care expansions at Dupont Hospital and Parkview Randallia.</p>
+      </div>
+
+      <div class="photo-pair">
+        <div class="photo-frame">
+          <img src="images/m-google.jpg" alt="Aerial view of the Google data center campus under construction in Fort Wayne" />
+          <div class="photo-label">$2B Google Data Center Campus</div>
         </div>
-        <div class="side-photos x-tall">
-          <div class="side-photo">
-            <div class="photo-frame">
-              <img src="images/m-google.jpg" alt="Aerial view of the Google data center campus under construction in Fort Wayne" />
-              <div class="photo-label">$2B Google Data Center Campus</div>
-            </div>
-          </div>
-          <div class="side-photo">
-            <div class="photo-frame">
-              <img src="images/m-north-river.jpg" alt="Rendering of the planned North River mixed-use district" />
-              <div class="photo-label">North River Mixed-Use District</div>
-            </div>
-          </div>
+        <div class="photo-frame">
+          <img src="images/m-north-river.jpg" alt="Rendering of the planned North River mixed-use district" />
+          <div class="photo-label">North River Mixed-Use District</div>
         </div>
       </div>
 
