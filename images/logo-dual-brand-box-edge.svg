@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Edge companion to logo-dual-brand-box-mask.svg.
+
+  Same four panels, drawn as outlines instead of fills, so it can mask a
+  bright gradient and give each pane of the hero's frosted box a rim light.
+  Rects are inset by half the stroke width so the outer edge stays inside
+  the viewBox and renders at full weight.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1299.7250841 667.801357">
+  <g fill="none" stroke="#fff" stroke-width="4">
+    <rect x="2" y="2" width="1295.7250977" height="121.6311035"/>
+    <rect x="2" y="544.1702708" width="1295.7250977" height="121.6311035"/>
+    <rect x="2" y="144.4666575" width="637.4447632" height="378.868042"/>
+    <rect x="660.2803277" y="144.4666575" width="636.0707397" height="378.868042"/>
+  </g>
+</svg>

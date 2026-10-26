@@ -249,18 +249,33 @@
      layered on top. Both share the artwork's 1299.725 x 667.801 viewBox so
      they register exactly. */
   .hero-mark{position:relative;width:clamp(290px,36vw,540px);
-       aspect-ratio:1299.7250841 / 667.801357}
-  .hero-mark-glass{position:absolute;inset:0;
-       -webkit-mask:url("images/logo-dual-brand-box-mask.svg") center/100% 100% no-repeat;
-               mask:url("images/logo-dual-brand-box-mask.svg") center/100% 100% no-repeat;
-       background:rgba(255,255,255,.58);
-       backdrop-filter:blur(22px) saturate(150%) brightness(1.08);
-       -webkit-backdrop-filter:blur(22px) saturate(150%) brightness(1.08)}
-  .hero-mark-art{position:absolute;inset:0;width:100%;height:100%;display:block;
-       filter:drop-shadow(0 2px 10px rgba(13,42,64,.3))}
+       aspect-ratio:1299.7250841 / 667.801357;
+       --box-mask:url("images/logo-dual-brand-box-mask.svg") center/100% 100% no-repeat;
+       --edge-mask:url("images/logo-dual-brand-box-edge.svg") center/100% 100% no-repeat}
+  .hero-mark > *{position:absolute;inset:0}
+  /* Cast shadow, clipped to the panels so it follows the box rather than a
+     rectangle. Sits behind the glass; its filter must not wrap the glass
+     layer, or the backdrop-filter would lose its backdrop. */
+  .hero-mark-shadow{-webkit-mask:var(--box-mask);mask:var(--box-mask);
+       background:rgba(8,26,42,.55);filter:blur(18px);transform:translateY(12px) scale(1.012)}
+  /* The pane itself: frosted backdrop plus a raking sheen across the glass */
+  .hero-mark-glass{-webkit-mask:var(--box-mask);mask:var(--box-mask);
+       background:linear-gradient(142deg,
+            rgba(255,255,255,.84) 0%, rgba(255,255,255,.64) 34%,
+            rgba(255,255,255,.59) 56%, rgba(255,255,255,.78) 100%);
+       backdrop-filter:blur(26px) saturate(160%) brightness(1.14);
+       -webkit-backdrop-filter:blur(26px) saturate(160%) brightness(1.14)}
+  /* Rim light on every pane edge */
+  .hero-mark-edge{-webkit-mask:var(--edge-mask);mask:var(--edge-mask);
+       background:linear-gradient(142deg,
+            rgba(255,255,255,.95) 0%, rgba(255,255,255,.4) 40%,
+            rgba(255,255,255,.3) 62%, rgba(255,255,255,.8) 100%);
+       mix-blend-mode:screen;opacity:.9}
+  .hero-mark-art{width:100%;height:100%;display:block;
+       filter:drop-shadow(0 1px 6px rgba(13,42,64,.26))}
   /* No backdrop-filter (older Firefox): fall back to a more solid white box */
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-    .hero-mark-glass{background:rgba(255,255,255,.82)}
+    .hero-mark-glass{background:rgba(255,255,255,.84)}
   }
   .shot{width:100%;object-fit:cover;border-radius:2px;box-shadow:0 24px 70px rgba(13,42,64,.22)}
 
@@ -436,7 +451,9 @@
 
     <div class="hero-logo" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
       <div class="hero-mark">
+        <div class="hero-mark-shadow" aria-hidden="true"></div>
         <div class="hero-mark-glass" aria-hidden="true"></div>
+        <div class="hero-mark-edge" aria-hidden="true"></div>
         <img class="hero-mark-art" src="images/logo-dual-brand-art.svg"
              alt="Dual-Branded Hotel — Home2 Suites by Hilton and Hilton Garden Inn, Fort Wayne North, Indiana" />
       </div>
