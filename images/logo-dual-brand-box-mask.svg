@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Mask for the hero's frosted-glass panel.
+
+  Reproduces the white box from Dual-Branded-Hotel-H2-HGI-FT-WAYNE-logo-white-box
+  blue.svg: a full-width band top and bottom, plus two middle cells separated by a
+  thin gap. The supplied -no-copy export of this box contained no drawable shapes,
+  so the geometry is taken from the -blue file's four white rects.
+
+  Used as a CSS mask so backdrop-filter frosts exactly this shape.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1299.7250841 667.801357">
+  <g fill="#fff">
+    <rect x="0" y="0" width="1299.7250977" height="125.6311035"/>
+    <rect x="0" y="542.1702708" width="1299.7250977" height="125.6311035"/>
+    <rect x="0" y="142.4666575" width="641.4447632" height="382.868042"/>
+    <rect x="658.2803277" y="142.4666575" width="640.0707397" height="382.868042"/>
+  </g>
+</svg>

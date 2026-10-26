@@ -244,13 +244,24 @@
   .photo-pair .photo-frame img{width:100%;height:clamp(240px,26vw,360px);object-fit:cover}
   @media(max-width:760px){.photo-pair{grid-template-columns:1fr}}
 
-  /* Hero logo. The mark ships with its own white box, so the frosted glass is
-     a thin mat around it rather than a backdrop. */
-  .hero-glass{padding:clamp(10px,1.1vw,16px);border-radius:5px;
-       background:rgba(255,255,255,.34);border:1px solid rgba(255,255,255,.55);
-       backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
-       box-shadow:0 22px 56px rgba(13,42,64,.32), inset 0 1px 0 rgba(255,255,255,.6)}
-  .hero-glass img{border-radius:2px}
+  /* Hero mark: the logo's white box rendered as frosted glass (a masked
+     backdrop-filter, so only the box shape frosts), with the blue artwork
+     layered on top. Both share the artwork's 1299.725 x 667.801 viewBox so
+     they register exactly. */
+  .hero-mark{position:relative;width:clamp(290px,36vw,540px);
+       aspect-ratio:1299.7250841 / 667.801357}
+  .hero-mark-glass{position:absolute;inset:0;
+       -webkit-mask:url("images/logo-dual-brand-box-mask.svg") center/100% 100% no-repeat;
+               mask:url("images/logo-dual-brand-box-mask.svg") center/100% 100% no-repeat;
+       background:rgba(255,255,255,.58);
+       backdrop-filter:blur(22px) saturate(150%) brightness(1.08);
+       -webkit-backdrop-filter:blur(22px) saturate(150%) brightness(1.08)}
+  .hero-mark-art{position:absolute;inset:0;width:100%;height:100%;display:block;
+       filter:drop-shadow(0 2px 10px rgba(13,42,64,.3))}
+  /* No backdrop-filter (older Firefox): fall back to a more solid white box */
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    .hero-mark-glass{background:rgba(255,255,255,.82)}
+  }
   .shot{width:100%;object-fit:cover;border-radius:2px;box-shadow:0 24px 70px rgba(13,42,64,.22)}
 
   .lead strong{font-weight:600}
@@ -390,9 +401,7 @@
     .brand-stats{grid-template-columns:1fr}
   }
   @media(max-width:760px){
-    .hero-logo{right:auto !important;left:50% !important;transform:translateX(-50%) !important;
-         top:150px !important;width:84%;max-width:330px}
-    .hero-logo img{width:100% !important}
+    .hero-mark{width:min(86vw,360px)}
     .two-col{grid-template-columns:1fr !important;gap:40px !important}
     .gallery-grid{grid-template-columns:1fr !important;grid-auto-rows:260px !important}
     .g-item{grid-column:auto !important;grid-row:auto !important}
@@ -425,9 +434,12 @@
          style="position:absolute;left:0;right:auto;top:0;width:100%;max-width:none;height:100%;object-fit:cover;object-position:50% 50%;filter:brightness(.94);will-change:transform" />
     <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(13,42,64,.8) 0%, rgba(13,42,64,.3) 26%, transparent 48%),linear-gradient(to left, rgba(13,42,64,.55) 0%, rgba(13,42,64,.3) 34%, transparent 60%)"></div>
 
-    <div class="hero-logo hero-glass" style="position:absolute;top:clamp(92px,10.5vh,124px);right:var(--pad)">
-      <img src="images/logo-dual-brand-hero.svg" alt="Dual-Branded Hotel — Home2 Suites by Hilton and Hilton Garden Inn, Fort Wayne North, Indiana"
-           style="width:clamp(240px,21vw,330px);height:auto;display:block" />
+    <div class="hero-logo" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
+      <div class="hero-mark">
+        <div class="hero-mark-glass" aria-hidden="true"></div>
+        <img class="hero-mark-art" src="images/logo-dual-brand-art.svg"
+             alt="Dual-Branded Hotel — Home2 Suites by Hilton and Hilton Garden Inn, Fort Wayne North, Indiana" />
+      </div>
     </div>
 
     <div style="position:absolute;bottom:0;left:0;right:0;padding-bottom:clamp(36px,5vh,64px);
