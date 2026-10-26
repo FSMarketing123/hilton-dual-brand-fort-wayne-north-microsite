@@ -9,7 +9,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400&family=Poppins:wght@300;400;500;600;700;800&family=Roboto+Slab:wght@800&display=swap" rel="stylesheet">
 
 <style id="hwe-nav-styles">
   /* ---- Theme knobs: change these to re-skin the nav ---- */
@@ -98,7 +98,10 @@
     --white:#FFFFFF;                                  /* main background     */
     --text:#55565A;                                   /* body text           */
     --divider:rgba(85,86,90,.16);
-    --font-cormorant:"Cormorant Garamond",Georgia,serif;
+    /* Titles: Abril Fatface display serif. Cormorant is kept only for the
+       italic editorial accents, since Abril ships no true italic. */
+    --font-cormorant:"Abril Fatface","Cormorant Garamond",Georgia,serif;
+    --font-serif:"Cormorant Garamond",Georgia,serif;
     --font-body:"Poppins",system-ui,sans-serif;
     --pad:clamp(24px,7vw,100px);
   }
@@ -117,10 +120,15 @@
   .wrap{max-width:1280px;margin:0 auto}
   .bleed{margin-left:calc(-1*var(--pad));margin-right:calc(-1*var(--pad))}
 
-  h1,h2,h3{font-family:var(--font-cormorant);font-weight:400;margin:0}
-  .h2{font-size:clamp(30px,3.6vw,46px);line-height:1.1;color:var(--primary)}
+  h1,h2,h3{font-family:var(--font-cormorant);font-weight:300;margin:0;letter-spacing:.01em}
+  .h2{font-size:clamp(30px,4.6vw,48px);line-height:1.04;color:var(--primary)}
   .lead{font-size:15.5px;color:var(--text);line-height:1.8;text-align:justify;text-align-last:left}
-  .em{font-style:italic}
+  .em{font-family:var(--font-serif);font-style:italic}
+
+  /* Eyebrow + hairline rule above a section heading */
+  .eyebrow{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.34em;
+       text-transform:uppercase;color:var(--primary);display:block}
+  .rule{width:54px;height:2px;background:var(--accent);margin:20px 0 26px}
 
   /* Scroll-reveal: elements scale + fade in as they enter the viewport */
   .reveal{opacity:0;transform:scale(.94) translateY(18px);
@@ -155,18 +163,35 @@
   .brand-lockup .rule{width:1px;height:62px;background:var(--divider)}
   @media(max-width:560px){.brand-lockup .rule{display:none}}
 
-  /* Overview property snapshot card */
-  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .stat-cell{padding:22px 26px;background:var(--sand-lt);border:1px solid var(--divider);
-       border-radius:2px;transition:transform .25s ease,box-shadow .25s ease;position:relative}
-  .stat-cell::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
-       opacity:0;transition:opacity .25s ease}
-  .stat-cell:hover{transform:scale(1.06);box-shadow:0 20px 50px rgba(13,42,64,.22);z-index:2;background:#fff}
-  .stat-cell:hover::before{opacity:1}
-  .stat-cell.full{grid-column:1 / -1}
-  .stat-value{font-family:var(--font-body);font-size:20px;color:var(--primary);font-weight:500;line-height:1.4}
-  .stat-value small{display:block;font-size:14.5px;font-weight:400;line-height:1.55;color:var(--text)}
-  .stat-label{font-family:var(--font-body);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);margin-top:7px}
+  /* Overview: copy column, then a full-width photo beneath it */
+  .ov-body{max-width:78ch;margin-top:44px}
+  .ov-btns{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap}
+  #overview-photo{width:100%;height:clamp(260px,34vw,460px);object-fit:cover;object-position:50% 50%;
+       border-radius:2px;box-shadow:0 24px 70px rgba(13,42,64,.22);margin-top:48px;display:block}
+
+  /* Property snapshot — hairline grid of attribute cells */
+  .snap{--snap-line:rgba(26,111,163,.26)}
+  .snap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--snap-line);
+       border:1px solid var(--snap-line);margin-top:44px}
+  .snap-grid .item{background:var(--sand);padding:26px clamp(20px,2.4vw,30px);position:relative;
+       transition:transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s,background .3s}
+  .snap-grid .item:hover{transform:scale(1.09);z-index:4;background:#fff;
+       box-shadow:0 18px 44px rgba(13,42,64,.24)}
+  .snap-grid .k{font-family:var(--font-body);font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+       color:var(--primary);font-weight:600}
+  .snap-grid .v{font-family:var(--font-body);font-weight:400;font-size:clamp(15px,1.45vw,18.5px);
+       color:var(--text);margin-top:10px;line-height:1.4}
+  .snap-grid .v small{font-family:var(--font-body);font-size:13px;color:var(--text);display:block;
+       margin-top:6px;font-weight:300;letter-spacing:.02em;opacity:.85}
+  .snap-grid .wide{grid-column:span 3}
+  @media(max-width:860px){
+    .snap-grid{grid-template-columns:1fr 1fr}
+    .snap-grid .wide{grid-column:span 2}
+  }
+  @media(max-width:520px){
+    .snap-grid{grid-template-columns:1fr}
+    .snap-grid .wide{grid-column:span 1}
+  }
 
   /* Gallery */
   .gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:300px;gap:3px}
@@ -229,8 +254,8 @@
   .bg-white .stat-callout{background:var(--sand-lt)}
   .stat-callout-num{font-family:var(--font-cormorant);font-weight:500;font-size:clamp(44px,5vw,64px);
        line-height:1;color:var(--primary)}
-  .stat-callout-text{font-family:var(--font-cormorant);font-style:italic;font-weight:400;
-       font-size:clamp(19px,1.8vw,23px);line-height:1.35;color:var(--text)}
+  .stat-callout-text{font-family:var(--font-serif);font-style:italic;font-weight:400;
+       font-size:clamp(20px,1.9vw,25px);line-height:1.35;color:var(--text)}
   .stat-callout-text span{display:block;font-family:var(--font-body);font-style:normal;font-size:11px;
        font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--primary);margin-top:8px}
 
@@ -355,8 +380,6 @@
     .two-col{grid-template-columns:1fr !important;gap:40px !important}
     .gallery-grid{grid-template-columns:1fr !important;grid-auto-rows:260px !important}
     .g-item{grid-column:auto !important;grid-row:auto !important}
-    .stats-grid{grid-template-columns:1fr !important}
-    .stat-cell{grid-column:1 / -1 !important}
     .footer-grid{grid-template-columns:1fr}
     .contact-grid{grid-template-columns:1fr}
     .location-cards{grid-template-columns:1fr}
@@ -407,42 +430,46 @@
         <span class="rule"></span>
         <img src="images/logo-hgi-color.svg" alt="Hilton Garden Inn" />
       </div>
-      <div class="two-col" style="margin-top:48px">
-        <div id="overview-copy-col">
+      <div class="ov-body">
           <p class="lead">Hodges Ward Elliott (&ldquo;HWE&rdquo;) is pleased to present the opportunity to acquire the dual-branded 172-room Home2 Suites/Hilton Garden Inn Fort Wayne North (&ldquo;Property&rdquo; or &ldquo;Hotel&rdquo;). Built in 2021, the Property sits directly adjacent to Parkview Regional Medical Center, Fort Wayne&rsquo;s largest hospital campus by bed count and Parkview Health&rsquo;s flagship medical campus.</p>
           <p class="lead" style="margin-top:20px">Located off I-69 on Diebold Road, the Hotel also offers convenient access to the Allen County War Memorial Coliseum (~12 minutes), Downtown Fort Wayne (~15 minutes), and Fort Wayne International Airport (~30 minutes). Offered free and clear of existing management and financing, the Property combines recent construction, Hilton brand strength, dual-brand synergies, and growing cash flow in a market benefiting from significant healthcare, corporate, and sports investment.</p>
-          <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap">
+          <div class="ov-btns">
             <!-- TODO: replace both CA hrefs with the RightSignature link + CA document for this deal -->
             <a href="#contact" class="btn btn-cta">Sign CA Online</a>
             <a href="#contact" class="btn btn-ghost">Download CA (DOCX)</a>
           </div>
-          <img id="overview-photo" src="images/overview-exterior.jpg" alt="Dual-branded hotel exterior and entrance drive"
-               style="width:100%;height:260px;object-fit:cover;object-position:50% 50%;border-radius:2px;box-shadow:0 24px 70px rgba(13,42,64,.22);margin-top:36px;display:block" />
-        </div>
-        <div class="stats-card" id="overview-stats-card">
-          <div class="stats-grid">
-            <div class="stat-cell full"><div class="stat-value">10650 Diebold Rd, Fort Wayne, IN 46845</div><div class="stat-label">Address</div></div>
-            <div class="stat-cell"><div class="stat-value">2021</div><div class="stat-label">Year Opened</div></div>
-            <div class="stat-cell"><div class="stat-value">Five</div><div class="stat-label">Stories</div></div>
-            <div class="stat-cell full"><div class="stat-value">172 Total<small>88 Upscale Select-Service Rooms<br>84 Extended Stay Suites</small></div><div class="stat-label">Rooms</div></div>
-            <div class="stat-cell"><div class="stat-value">Fort Wayne, IN</div><div class="stat-label">Market</div></div>
-            <div class="stat-cell"><div class="stat-value">Fort Wayne North</div><div class="stat-label">Submarket</div></div>
-            <div class="stat-cell"><div class="stat-value">Upscale</div><div class="stat-label">Class</div></div>
-            <div class="stat-cell"><div class="stat-value">PUD</div><div class="stat-label">Zoning</div></div>
-            <div class="stat-cell"><div class="stat-value">57,012 SF</div><div class="stat-label">Gross Building Area</div></div>
-            <div class="stat-cell"><div class="stat-value">5.08 AC</div><div class="stat-label">Land Area</div></div>
-            <div class="stat-cell"><div class="stat-value">None</div><div class="stat-label">F&amp;B</div></div>
-            <div class="stat-cell"><div class="stat-value">4,208 SF</div><div class="stat-label">Meeting Space</div></div>
-            <div class="stat-cell full"><div class="stat-value" style="font-size:17px">Complimentary Breakfast, The Garden Grille &amp; Bar, Indoor Pool, Fitness Center, Business Center</div><div class="stat-label">Amenities</div></div>
-            <div class="stat-cell full"><div class="stat-value">325 Spaces<small>Self Parking &ndash; Complimentary</small></div><div class="stat-label">Parking</div></div>
-            <div class="stat-cell"><div class="stat-value">Fee Simple</div><div class="stat-label">Interest Conveyed</div></div>
-            <div class="stat-cell"><div class="stat-value">Non-Union</div><div class="stat-label">Labor</div></div>
-            <div class="stat-cell"><div class="stat-value" style="font-size:17px">Blue Flame Hospitality</div><div class="stat-label">Owner</div></div>
-            <div class="stat-cell"><div class="stat-value" style="font-size:17px">Hilton Worldwide</div><div class="stat-label">Affiliation</div></div>
-            <div class="stat-cell full"><div class="stat-value" style="font-size:17px">Blue Flame Hospitality (Unencumbered)</div><div class="stat-label">Management</div></div>
-            <div class="stat-cell full"><div class="stat-value">Masonry</div><div class="stat-label">Construction Type</div></div>
-          </div>
-        </div>
+      </div>
+      <img id="overview-photo" src="images/overview-exterior.jpg" alt="Dual-branded hotel exterior and entrance drive" />
+    </div>
+  </section>
+
+  <!-- PROPERTY SNAPSHOT -->
+  <section class="section snap bg-sand" id="snapshot">
+    <div class="wrap">
+      <span class="eyebrow">Property Snapshot</span>
+      <div class="rule"></div>
+      <h2 class="h2">Building Attributes &amp; Amenities</h2>
+      <div class="snap-grid">
+        <div class="item"><div class="k">Address</div><div class="v">10650 Diebold Rd<br>Fort Wayne, IN 46845</div></div>
+        <div class="item"><div class="k">Year Opened</div><div class="v">2021</div></div>
+        <div class="item"><div class="k">Rooms</div><div class="v">172 Total<small>88 Upscale Select-Service Rooms<br>84 Extended Stay Suites</small></div></div>
+        <div class="item"><div class="k">Stories</div><div class="v">Five</div></div>
+        <div class="item"><div class="k">Market</div><div class="v">Fort Wayne, IN</div></div>
+        <div class="item"><div class="k">Submarket</div><div class="v">Fort Wayne North</div></div>
+        <div class="item"><div class="k">Class</div><div class="v">Upscale</div></div>
+        <div class="item"><div class="k">Zoning</div><div class="v">PUD</div></div>
+        <div class="item"><div class="k">Gross Building Area</div><div class="v">57,012 SF</div></div>
+        <div class="item"><div class="k">Land Area</div><div class="v">5.08 AC</div></div>
+        <div class="item"><div class="k">F&amp;B</div><div class="v">None</div></div>
+        <div class="item"><div class="k">Meeting Space</div><div class="v">4,208 SF</div></div>
+        <div class="item"><div class="k">Interest Conveyed</div><div class="v">Fee Simple</div></div>
+        <div class="item"><div class="k">Labor</div><div class="v">Non-Union</div></div>
+        <div class="item"><div class="k">Construction Type</div><div class="v">Masonry</div></div>
+        <div class="item"><div class="k">Owner</div><div class="v">Blue Flame Hospitality</div></div>
+        <div class="item"><div class="k">Affiliation</div><div class="v">Hilton Worldwide</div></div>
+        <div class="item"><div class="k">Management</div><div class="v">Blue Flame Hospitality (Unencumbered)</div></div>
+        <div class="item wide"><div class="k">Parking</div><div class="v">325 Spaces<small>Self Parking &ndash; Complimentary</small></div></div>
+        <div class="item wide"><div class="k">Amenities</div><div class="v">Complimentary Breakfast, The Garden Grille &amp; Bar, Indoor Pool, Fitness Center, Business Center</div></div>
       </div>
     </div>
   </section>
@@ -901,30 +928,7 @@
   </script>
 
   <script>
-    // Keep the overview photo bottom-aligned with the property snapshot card.
-    function syncOverviewPhotoHeight() {
-      var card = document.getElementById("overview-stats-card");
-      var col = document.getElementById("overview-copy-col");
-      var img = document.getElementById("overview-photo");
-      if (!card || !col || !img) return;
-      if (window.innerWidth <= 760) { img.style.height = "260px"; return; }
-      var priorHeight = img.style.height;
-      img.style.height = "0px";
-      var colHeightWithoutImg = col.offsetHeight;
-      img.style.height = priorHeight || "260px";
-      var cardHeight = card.offsetHeight;
-      var target = cardHeight - colHeightWithoutImg;
-      img.style.height = (target >= 220 ? target : 220) + "px";
-    }
-    window.addEventListener("load", syncOverviewPhotoHeight);
-    window.addEventListener("resize", syncOverviewPhotoHeight);
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(syncOverviewPhotoHeight);
-    }
-
     document.addEventListener("DOMContentLoaded", function () {
-      syncOverviewPhotoHeight();
-
       // Hero parallax
       var heroSection = document.getElementById("top");
       var heroImg = document.getElementById("hero-img");
@@ -975,7 +979,7 @@
   <script>
     // Scroll-reveal: scale + fade content in as it enters the viewport.
     (function () {
-      var SEL = ".h2, .lead, .stats-card, .g-item, .photo-frame, .shot, .brand-lockup, "
+      var SEL = ".h2, .lead, .eyebrow, .snap-grid, .g-item, .photo-frame, .shot, .brand-lockup, "
               + ".side-photo, #overview-photo, .brand-stat, .brand-logo-grid, .location-cards, "
               + ".callout-list, .stat-callout, .cta-buttons, .footer-grid, .award-card";
       var els = Array.prototype.slice.call(document.querySelectorAll(SEL)).filter(function (el) {
