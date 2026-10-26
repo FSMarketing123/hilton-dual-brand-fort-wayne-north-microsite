@@ -1176,7 +1176,11 @@
               + ".side-photo, #overview-photo, .brand-stat, .brand-logo-grid, .location-cards, "
               + ".callout-list, .stat-callout, .cta-buttons, .footer-grid, .award-card";
       var els = Array.prototype.slice.call(document.querySelectorAll(SEL)).filter(function (el) {
-        return !el.closest("#top") && !el.closest(".nav") && !el.closest(".photo-frame");
+        if (el.closest("#top") || el.closest(".nav")) return false;
+        // Animate only the outermost match. closest() counts the element
+        // itself, so test from the parent — otherwise every .photo-frame
+        // excludes itself, and nested matches would compound the transform.
+        return !(el.parentElement && el.parentElement.closest(SEL));
       });
       if (!els.length) return;
       var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
