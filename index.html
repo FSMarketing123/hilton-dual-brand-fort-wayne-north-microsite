@@ -200,14 +200,16 @@
        color:var(--text);margin-top:10px;line-height:1.4}
   .snap-grid .v small{font-family:var(--font-body);font-size:13px;color:var(--text);display:block;
        margin-top:6px;font-weight:300;letter-spacing:.02em;opacity:.85}
-  .snap-grid .wide{grid-column:span 3}
+  /* Amenities carries the longest value, so it takes the wider half of the
+     closing row and Parking sits beside it. */
+  .snap-grid .wide2{grid-column:span 2}
   @media(max-width:860px){
     .snap-grid{grid-template-columns:1fr 1fr}
-    .snap-grid .wide{grid-column:span 2}
+    .snap-grid .wide2{grid-column:span 1}
   }
   @media(max-width:520px){
     .snap-grid{grid-template-columns:1fr}
-    .snap-grid .wide{grid-column:span 1}
+    .snap-grid .wide2{grid-column:span 1}
   }
 
   /* Gallery */
@@ -533,8 +535,8 @@
         <div class="item"><div class="k">Owner</div><div class="v">Blue Flame Hospitality</div></div>
         <div class="item"><div class="k">Affiliation</div><div class="v">Hilton Worldwide</div></div>
         <div class="item"><div class="k">Management</div><div class="v">Blue Flame Hospitality (Unencumbered)</div></div>
-        <div class="item wide"><div class="k">Parking</div><div class="v">325 Spaces<small>Self Parking &ndash; Complimentary</small></div></div>
-        <div class="item wide"><div class="k">Amenities</div><div class="v">Complimentary Breakfast, The Garden Grille &amp; Bar, Indoor Pool, Fitness Center, Business Center</div></div>
+        <div class="item"><div class="k">Parking</div><div class="v">325 Spaces<small>Self Parking &ndash; Complimentary</small></div></div>
+        <div class="item wide2"><div class="k">Amenities</div><div class="v">Complimentary Breakfast, The Garden Grille &amp; Bar, Indoor Pool, Fitness Center, Business Center</div></div>
       </div>
     </div>
   </section>
