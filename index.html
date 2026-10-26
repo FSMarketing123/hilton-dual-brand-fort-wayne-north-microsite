@@ -167,12 +167,10 @@
   .ov-body{margin-top:44px}
   .ov-btns{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
 
-  /* Body copy flowed across two columns so it fills the full content width
-     without running to unreadable 150-character lines. */
-  .lead-cols{column-count:2;column-gap:clamp(40px,5vw,72px)}
-  .lead-cols .lead{break-inside:avoid;margin:0 0 20px}
+  /* Body copy as one block running the full content width */
+  .lead-cols{width:100%}
+  .lead-cols .lead{max-width:none;margin:0 0 20px}
   .lead-cols .lead:last-child{margin-bottom:0}
-  @media(max-width:860px){.lead-cols{column-count:1}}
   #overview-photo{width:100%;height:clamp(260px,34vw,460px);object-fit:cover;object-position:50% 50%;
        border-radius:2px;box-shadow:0 24px 70px rgba(13,42,64,.22);margin-top:48px;display:block}
 
@@ -246,15 +244,23 @@
   .photo-pair .photo-frame img{width:100%;height:clamp(240px,26vw,360px);object-fit:cover}
   @media(max-width:760px){.photo-pair{grid-template-columns:1fr}}
 
-  /* Hero logo on a frosted-glass panel (the dual-brand mark is blue, so the glass is light) */
-  .hero-glass{padding:clamp(24px,2.6vw,40px) clamp(28px,3vw,48px);border-radius:6px;
-       background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.72);
-       backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
-       box-shadow:0 26px 64px rgba(13,42,64,.34), inset 0 1px 0 rgba(255,255,255,.7)}
+  /* Hero logo. The mark ships with its own white box, so the frosted glass is
+     a thin mat around it rather than a backdrop. */
+  .hero-glass{padding:clamp(10px,1.1vw,16px);border-radius:5px;
+       background:rgba(255,255,255,.34);border:1px solid rgba(255,255,255,.55);
+       backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+       box-shadow:0 22px 56px rgba(13,42,64,.32), inset 0 1px 0 rgba(255,255,255,.6)}
+  .hero-glass img{border-radius:2px}
   .shot{width:100%;object-fit:cover;border-radius:2px;box-shadow:0 24px 70px rgba(13,42,64,.22)}
 
   .lead strong{font-weight:600}
   .footnote{font-size:15.5px;line-height:1.8;color:var(--text);font-style:italic;margin-top:20px}
+
+  /* Copy with a stat callout alongside it */
+  .copy-callout{display:grid;grid-template-columns:1.45fr 1fr;gap:clamp(32px,4vw,56px);
+       align-items:center;margin-top:28px}
+  .copy-callout .stat-callout{margin:0}
+  @media(max-width:860px){.copy-callout{grid-template-columns:1fr;gap:28px}}
 
   /* Stat callouts */
   .stat-callout-row{display:grid;grid-template-columns:1fr;gap:16px;margin:36px 0 0}
@@ -419,9 +425,9 @@
          style="position:absolute;left:0;right:auto;top:0;width:100%;max-width:none;height:100%;object-fit:cover;object-position:50% 50%;filter:brightness(.94);will-change:transform" />
     <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(13,42,64,.8) 0%, rgba(13,42,64,.3) 26%, transparent 48%),linear-gradient(to left, rgba(13,42,64,.55) 0%, rgba(13,42,64,.3) 34%, transparent 60%)"></div>
 
-    <div class="hero-logo hero-glass" style="position:absolute;top:clamp(150px,21vh,250px);right:var(--pad)">
+    <div class="hero-logo hero-glass" style="position:absolute;top:clamp(92px,10.5vh,124px);right:var(--pad)">
       <img src="images/logo-dual-brand-hero.svg" alt="Dual-Branded Hotel — Home2 Suites by Hilton and Hilton Garden Inn, Fort Wayne North, Indiana"
-           style="width:clamp(300px,28vw,420px);height:auto;display:block" />
+           style="width:clamp(240px,21vw,330px);height:auto;display:block" />
     </div>
 
     <div style="position:absolute;bottom:0;left:0;right:0;padding-bottom:clamp(36px,5vh,64px);
@@ -530,30 +536,23 @@
   <!-- HIGHLIGHT 1: COMPETITIVE SET DOMINANCE AND CLIMBING CASH FLOW -->
   <section class="section highlight-section bg-white">
     <div class="wrap">
-      <div class="two-col" style="align-items:stretch">
-        <div style="display:flex;flex-direction:column">
-          <h2 class="h2">Competitive Set Dominance and Climbing Cash Flow</h2>
-          <p class="lead" style="max-width:68ch;margin-top:28px">The Home2 Suites and Hilton Garden Inn ranked #1 in their respective competitive sets for annual RevPAR in each year from 2023 through 2025, with RevPAR penetration indices exceeding 135%. Momentum remains strong, with year-to-date NOI increasing 34.7% year on year through September 2026.</p>
-          <div class="stat-callout-row">
-            <div class="stat-callout">
-              <div class="stat-callout-num">34.7%</div>
-              <div class="stat-callout-text">NOI Growth Year on Year<span>YTD September 2026</span></div>
-            </div>
-          </div>
+      <h2 class="h2 full-head">Competitive Set Dominance and Climbing Cash Flow</h2>
+      <div class="copy-callout">
+        <p class="lead">The Home2 Suites and Hilton Garden Inn ranked #1 in their respective competitive sets for annual RevPAR in each year from 2023 through 2025, with RevPAR penetration indices exceeding 135%. Momentum remains strong, with year-to-date NOI increasing 34.7% year on year through September 2026.</p>
+        <div class="stat-callout">
+          <div class="stat-callout-num">34.7%</div>
+          <div class="stat-callout-text">NOI Growth Year on Year<span>YTD September 2026</span></div>
         </div>
-        <div class="side-photos x-tall">
-          <div class="side-photo">
-            <div class="photo-frame">
-              <img src="images/h1-hgi-exterior.jpg" alt="Hilton Garden Inn entrance and porte-cochère at dusk" />
-              <div class="photo-label">Hilton Garden Inn Entrance</div>
-            </div>
-          </div>
-          <div class="side-photo">
-            <div class="photo-frame">
-              <img src="images/h1-h2-exterior.jpg" alt="Home2 Suites exterior at dusk" />
-              <div class="photo-label">Home2 Suites Exterior</div>
-            </div>
-          </div>
+      </div>
+
+      <div class="photo-pair">
+        <div class="photo-frame">
+          <img src="images/h1-hgi-exterior.jpg" alt="Hilton Garden Inn entrance and porte-cochère at dusk" />
+          <div class="photo-label">Hilton Garden Inn Entrance</div>
+        </div>
+        <div class="photo-frame">
+          <img src="images/h1-h2-exterior.jpg" alt="Home2 Suites exterior at dusk" />
+          <div class="photo-label">Home2 Suites Exterior</div>
         </div>
       </div>
     </div>
