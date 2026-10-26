@@ -117,6 +117,18 @@
   .section{padding:clamp(64px,10vh,120px) var(--pad)}
   .bg-white{background:var(--white)}
   .bg-sand{background:var(--sand)}
+
+  /* Tiled texture on the white sections. Painted by a pseudo-element so the
+     .5 opacity applies to the pattern alone and not to the section's content.
+     background-attachment:fixed means the 25% size is of the viewport, so the
+     tile stays put as the page scrolls. */
+  .bg-white{position:relative;isolation:isolate}
+  .bg-white::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+       background-image:url("images/fabric_of_squares_gray.png");
+       background-size:25%;
+       background-attachment:fixed;
+       background-repeat:repeat;
+       opacity:.5}
   .wrap{max-width:1280px;margin:0 auto}
   .bleed{margin-left:calc(-1*var(--pad));margin-right:calc(-1*var(--pad))}
 
@@ -252,6 +264,11 @@
        aspect-ratio:1299.7250841 / 667.801357;
        --box-mask:url("images/logo-dual-brand-box-mask.svg") center/100% 100% no-repeat;
        --edge-mask:url("images/logo-dual-brand-box-edge.svg") center/100% 100% no-repeat}
+  /* Snap the mark to even widths so flex centring lands on whole pixels —
+     a fractional offset resamples the SVG and softens the blue artwork. */
+  @supports (width: round(down, 10vw, 2px)){
+    .hero-mark{width:clamp(290px, round(down, 36vw, 2px), 540px)}
+  }
   .hero-mark > *{position:absolute;inset:0}
   /* Cast shadow, clipped to the panels so it follows the box rather than a
      rectangle. Sits behind the glass; its filter must not wrap the glass
@@ -270,9 +287,10 @@
        background:linear-gradient(142deg,
             rgba(255,255,255,.95) 0%, rgba(255,255,255,.4) 40%,
             rgba(255,255,255,.3) 62%, rgba(255,255,255,.8) 100%);
-       mix-blend-mode:screen;opacity:.9}
-  .hero-mark-art{width:100%;height:100%;display:block;
-       filter:drop-shadow(0 1px 6px rgba(13,42,64,.26))}
+       opacity:.85}
+  /* No filter here: a drop-shadow would rasterize the artwork through an
+     offscreen buffer and soften the blue. Depth comes from .hero-mark-shadow. */
+  .hero-mark-art{width:100%;height:100%;display:block}
   /* No backdrop-filter (older Firefox): fall back to a more solid white box */
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
     .hero-mark-glass{background:rgba(255,255,255,.84)}
@@ -449,7 +467,7 @@
          style="position:absolute;left:0;right:auto;top:0;width:100%;max-width:none;height:100%;object-fit:cover;object-position:50% 50%;filter:brightness(.94);will-change:transform" />
     <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(13,42,64,.8) 0%, rgba(13,42,64,.3) 26%, transparent 48%),linear-gradient(to left, rgba(13,42,64,.55) 0%, rgba(13,42,64,.3) 34%, transparent 60%)"></div>
 
-    <div class="hero-logo" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
+    <div class="hero-logo" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none">
       <div class="hero-mark">
         <div class="hero-mark-shadow" aria-hidden="true"></div>
         <div class="hero-mark-glass" aria-hidden="true"></div>
