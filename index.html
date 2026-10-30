@@ -343,7 +343,10 @@
   @media(prefers-reduced-motion:reduce){.award-card,.award-card::after{transition:none}}
 
   /* Location */
-  .location-band{display:block;width:100%;height:clamp(300px,46vw,680px);object-fit:cover;object-position:50% 55%}
+  /* The band is now a labelled aerial rather than a decorative photo, so it
+     runs at its own aspect ratio — cropping to a fixed height would cut the
+     road labels and the I-69 shield off the top and bottom. */
+  .location-band{display:block;width:100%;height:auto}
   .location-split{display:grid;grid-template-columns:1fr 1.25fr;column-gap:clamp(40px,5vw,64px);align-items:stretch;
        max-width:1280px;margin:0 auto;padding:72px 0}
   .highlight-section h2.location-title{grid-column:1 / -1;max-width:none;margin-bottom:36px}
@@ -690,7 +693,7 @@
 
   <!-- HIGHLIGHT 3: AT THE HEART OF THE REGION'S HEALTHCARE EPICENTER -->
   <section class="highlight-section bg-sand" id="location" style="padding:0">
-    <img class="location-band" src="images/location-band.jpg" alt="Aerial view of Fort Wayne, Indiana" />
+    <img class="location-band" src="images/location-band.jpg" alt="Aerial map showing the dual-branded hotel site on Diebold Road, off I-69 near Park View Plaza Drive and E Dupont Road" />
 
     <div style="padding:0 var(--pad)">
       <div class="location-split">
